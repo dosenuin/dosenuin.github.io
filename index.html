@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Galih Pradananta</title>
+    <title>Dosen UIN</title>
     <meta content="Sebuah catatan dosen dan mantan pemain olimpiade" name="description">
     <meta content="resume, mata kuliah, dosen, uin tulungagung, olimpiade" name="keywords">
     <meta name="author" content="Galih Pradananta">
@@ -28,7 +28,8 @@
 						return;
 				}
 
-				let folderPath = pathParts.slice(0, -1).join('/'); // Ambil satu tingkat di atas
+				<!-- let folderPath = pathParts.slice(0, -1).join('/'); // Ambil satu tingkat di atas -->
+				let folderPath = pathParts.join('/');
 
 				const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
 
