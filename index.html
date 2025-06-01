@@ -21,6 +21,19 @@
 	</div>
 </div>
 		<script>
+		// Highlight style (can be customized)
+		const squareButtonStyle = `
+			.square-button {
+				aspect-ratio: 1 / 1; /* Biar tetap persegi */
+				font-size: 1.5rem;
+					}
+		`;
+		
+		// Add highlight styles to head
+		const styleSquareButtonElement = document.createElement('style');
+		styleSquareButtonElement.textContent = squareButtonStyle;
+		document.head.appendChild(styleSquareButtonElement);
+	
 		document.addEventListener("DOMContentLoaded", function () {
 				const repoOwner = "dosenuin"; // Username GitHub Anda
 				const repoName = "dosenuin.github.io"; // Nama repository Anda
@@ -44,7 +57,7 @@
 												let button = document.createElement("a");
 												button.href = `../${item.name}/`; // Link ke folder
 												button.id = "KOLEKSI"; // Ganti class dengan id
-												button.className = "btn btn-outline-primary ";
+												button.className = "btn btn-primary w-100 square-button";
 												// button.textContent = item.name;
 												button.textContent = item.name.replace(/-/g, ' ').toUpperCase();
 												lengthCol.appendChild(button);
