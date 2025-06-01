@@ -28,7 +28,8 @@
 			.square-button {
 				aspect-ratio: 1 / 1; /* Biar tetap persegi */
 				font-size: 5rem;
-					}
+				vertical-align: middle;
+				}
 		`;
 		
 		// Add highlight styles to head
@@ -50,9 +51,9 @@
 						.then(data => {
 								let folderList = document.getElementById("folder-list");
 								folderList.innerHTML = "";
-
+										
+								let numberButton = 0;
 								data.forEach(item => {
-										let numberButton = 0;
 										if (item.type === "dir") { // Hanya menampilkan folder
 												numberButton = numberButton + 1;
 												let lengthCol = document.createElement("div");
