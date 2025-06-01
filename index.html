@@ -68,6 +68,34 @@
 								document.getElementById("folder-list").innerHTML = "Gagal memuat daftar folder.";
 						});
 		});
+		
+			function autoResizeFont(button) {
+			const maxFontSize = 100; // px
+			let size = 10;
+			const container = button;
+			const text = button.textContent;
+			const span = document.createElement("span");
+			span.style.position = "absolute";
+			span.style.visibility = "hidden";
+			span.style.whiteSpace = "nowrap";
+			document.body.appendChild(span);
+
+			while (size <= maxFontSize) {
+				span.style.fontSize = size + "px";
+				span.textContent = text;
+				if (span.offsetWidth > container.offsetWidth * 0.9 || span.offsetHeight > container.offsetHeight * 0.9) {
+					size--;
+					break;
+				}
+				size++;
+			}
+
+			button.style.fontSize = size + "px";
+			span.remove();
+		}
+
+		document.querySelectorAll('.square-button').forEach(btn => autoResizeFont(btn));
+
 		</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
