@@ -23,15 +23,15 @@
 				let currentPath = window.location.pathname;
 				let pathParts = currentPath.split('/').filter(part => part !== "");
 
-				if (pathParts.length < 2) {
-						document.getElementById("folder-list").innerHTML = "Tidak dapat mendeteksi direktori.";
-						return;
-				}
+				<!-- if (pathParts.length < 2) { -->
+						<!-- document.getElementById("folder-list").innerHTML = "Tidak dapat mendeteksi direktori."; -->
+						<!-- return; -->
+				<!-- } -->
 
 				<!-- let folderPath = pathParts.slice(0, -1).join('/'); // Ambil satu tingkat di atas -->
-				let folderPath = pathParts.join('/');
 
-				const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+				<!-- const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`; -->
+				const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/`;
 
 				fetch(apiUrl)
 						.then(response => response.json())
