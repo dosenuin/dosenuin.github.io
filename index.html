@@ -33,6 +33,9 @@
 				align-items: center;
 				justify-content: center;
 			}
+			.buttonLink {
+				font-size: clamp(1.5rem,2vw,3rem);
+			}
 		`;
 		
 		// Add highlight styles to head
@@ -70,7 +73,7 @@
 												button.setAttribute("data-bs-toggle", "tooltip");
 												button.setAttribute("data-bs-placement", "bottom");
 												button.setAttribute("data-bs-html", "true");
-												button.setAttribute("data-bs-title", `<a href="../${item.name}/">${item.name.replace(/-/g, '<br>').toUpperCase()}</a>`);
+												button.setAttribute("data-bs-title", `<a class="buttonLink" href="../${item.name}/">${item.name.replace(/-/g, '<br>').toUpperCase()}</a>`);
 												lengthCol.appendChild(button);
 												new bootstrap.Tooltip(button, {
 													trigger: 'click focus',
