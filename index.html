@@ -68,6 +68,7 @@
 												button.setAttribute("data-bs-toggle", "tooltip");
 												button.setAttribute("data-bs-title", item.name.replace(/-/g, ' ').toUpperCase());
 												lengthCol.appendChild(button);
+												new bootstrap.Tooltip(button);
 										}
 								});
 						})
