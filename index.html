@@ -28,13 +28,16 @@
 		const squareButtonStyle = `
 			.square-button {
 				aspect-ratio: 1 / 1;
-				font-size: clamp(2rem, 4vw, 4rem); /* Responsive font size */
+				font-size: clamp(1rem, 2.5vw, 2rem);
 				vertical-align: middle;
-				align-items: center;
-				justify-content: center;
+				text-align: center;
+				padding: 0.5rem;
+				text-decoration: none;
 			}
-			.buttonLink {
-				font-size: clamp(1.5rem,2vw,3rem);
+			.folder-name {
+				line-height: 1.2;
+				font-size: clamp(0.7rem, 1.2vw, 1rem);
+				word-break: break-word;
 			}
 		`;
 		
@@ -65,15 +68,17 @@
 												let lengthCol = document.createElement("div");
 												lengthCol.className = "col";
 												folderList.appendChild(lengthCol);
-												let button = document.createElement("button");
-												<!-- let a = `../${item.name}/`; // Link ke folder -->
-												<!-- button.id = "KOLEKSI"; // Ganti class dengan id -->
-												button.className = "btn btn-primary w-100 square-button align-middle";
-												button.textContent = numberButton.toString();
-												button.setAttribute("data-bs-toggle", "tooltip");
-												button.setAttribute("data-bs-placement", "bottom");
-												button.setAttribute("data-bs-html", "true");
-												button.setAttribute("data-bs-title", `<a class="buttonLink" href="../${item.name}/">${item.name.replace(/-/g, '<br>').toUpperCase()}</a>`);
+												let button = document.createElement("a"); // Ganti ke <a> agar bisa langsung diklik
+												button.href = `../${item.name}/`;
+												button.className = "btn btn-primary w-100 square-button align-middle d-flex flex-column justify-content-center";
+												const numberSpan = document.createElement("div");
+												numberSpan.textContent = numberButton.toString();
+												numberSpan.className = "fw-bold fs-2";
+												const nameSpan = document.createElement("div");
+												nameSpan.innerHTML = item.name.replace(/-/g, '<br>').toUpperCase();
+												nameSpan.className = "folder-name small"; // Bisa dikustomisasi via CSS
+												button.appendChild(numberSpan);
+												button.appendChild(nameSpan);
 												lengthCol.appendChild(button);
 												new bootstrap.Tooltip(button, {
 													trigger: 'click focus',
