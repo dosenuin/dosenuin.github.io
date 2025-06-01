@@ -60,14 +60,15 @@
 												let lengthCol = document.createElement("div");
 												lengthCol.className = "col";
 												folderList.appendChild(lengthCol);
-												let button = document.createElement("a");
-												button.href = `../${item.name}/`; // Link ke folder
+												let button = document.createElement("button");
+												<!-- let a = `../${item.name}/`; // Link ke folder -->
 												<!-- button.id = "KOLEKSI"; // Ganti class dengan id -->
 												button.className = "btn btn-primary w-100 square-button align-middle";
 												button.textContent = numberButton.toString();
 												button.setAttribute("data-bs-toggle", "tooltip");
 												button.setAttribute("data-bs-placement", "bottom");
-												button.setAttribute("data-bs-title", item.name.replace(/-/g, ' ').toUpperCase());
+												button.setAttribute("data-bs-html", "true");
+												button.setAttribute("data-bs-title", `<a href="`../${item.name}/`">`+item.name.replace(/-/g, ' ').toUpperCase()+`</a>`);
 												lengthCol.appendChild(button);
 												new bootstrap.Tooltip(button);
 										}
