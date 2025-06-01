@@ -20,7 +20,7 @@
   <body>
 
 <div class="container d-flex justify-content-center">
-  <div class="row row-cols-sm-3 row-cols-lg-5 g-3 w-100 text-center" style="max-width: 80vw;" id="folder-list">
+  <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3 w-100 text-center" style="max-width: 80vw;" id="folder-list">
 	</div>
 </div>
 		<script>
@@ -28,7 +28,7 @@
 		const squareButtonStyle = `
 			.square-button {
 				aspect-ratio: 1 / 1; /* Biar tetap persegi */
-				font-size: 5rem;
+				font-size: 4rem;
 				vertical-align: middle;
 				}
 		`;
@@ -66,6 +66,7 @@
 												button.className = "btn btn-primary w-100 square-button align-middle";
 												button.textContent = numberButton.toString();
 												button.setAttribute("data-bs-toggle", "tooltip");
+												button.setAttribute("data-placement", "bottom");
 												button.setAttribute("data-bs-title", item.name.replace(/-/g, ' ').toUpperCase());
 												lengthCol.appendChild(button);
 												new bootstrap.Tooltip(button);
