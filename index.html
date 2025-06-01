@@ -19,24 +19,31 @@
   </head>
   <body>
 
-<div class="container d-flex justify-content-center">
-  <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3 w-100 text-center" style="max-width: 80vw;" id="folder-list">
-	</div>
+<div class="container">
+  <div class="d-flex flex-wrap justify-content-center gap-3" id="folder-list" style="max-width: 80vw;"></div>
 </div>
+
 		<script>
 		// Highlight style (can be customized)
 		const squareButtonStyle = `
 			.square-button {
-				aspect-ratio: 1 / 1;
-				font-size: clamp(1rem, 2.5vw, 2rem);
-				vertical-align: middle;
+				width: 120px;
+				height: 120px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 				text-align: center;
+				font-size: clamp(1rem, 2.5vw, 1.5rem);
 				padding: 0.5rem;
 				text-decoration: none;
+				white-space: normal;
 			}
+
 			.folder-name {
+				font-size: 0.8rem;
 				line-height: 1.2;
-				font-size: clamp(0.7rem, 1.2vw, 1rem);
+				margin-top: 0.25rem;
 				word-break: break-word;
 			}
 		`;
@@ -65,21 +72,22 @@
 								data.forEach(item => {
 										if (item.type === "dir") { // Hanya menampilkan folder
 												numberButton = numberButton + 1;
-												let lengthCol = document.createElement("div");
-												lengthCol.className = "col";
-												folderList.appendChild(lengthCol);
-												let button = document.createElement("a"); // Ganti ke <a> agar bisa langsung diklik
+												let button = document.createElement("a");
 												button.href = `../${item.name}/`;
-												button.className = "btn btn-primary w-100 square-button align-middle d-flex flex-column justify-content-center";
+												button.className = "btn btn-primary square-button";
+
 												const numberSpan = document.createElement("div");
 												numberSpan.textContent = numberButton.toString();
-												numberSpan.className = "fw-bold fs-2";
+												numberSpan.className = "fw-bold fs-3";
+
 												const nameSpan = document.createElement("div");
 												nameSpan.innerHTML = item.name.replace(/-/g, '<br>').toUpperCase();
-												nameSpan.className = "folder-name small"; // Bisa dikustomisasi via CSS
+												nameSpan.className = "folder-name";
+
 												button.appendChild(numberSpan);
 												button.appendChild(nameSpan);
-												lengthCol.appendChild(button);
+
+												folderList.appendChild(button); // tidak perlu div.col lagi
 												new bootstrap.Tooltip(button, {
 													trigger: 'click focus',
 													html: true
