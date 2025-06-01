@@ -28,7 +28,7 @@
 		const squareButtonStyle = `
 			.square-button {
 				aspect-ratio: 1 / 1; /* Biar tetap persegi */
-				font-size: 4rem;
+				font-size: 2rem;
 				vertical-align: middle;
 				}
 		`;
@@ -68,7 +68,7 @@
 												button.setAttribute("data-bs-toggle", "tooltip");
 												button.setAttribute("data-bs-placement", "bottom");
 												button.setAttribute("data-bs-html", "true");
-												button.setAttribute("data-bs-title", `<a href="../${item.name}/">${item.name.replace(/-/g, ' ').toUpperCase()}</a>`);
+												button.setAttribute("data-bs-title", `<a href="../${item.name}/">${item.name.replace(/-/g, '<br>').toUpperCase()}</a>`);
 												lengthCol.appendChild(button);
 												new bootstrap.Tooltip(button, {
 													trigger: 'click focus',
