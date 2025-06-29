@@ -126,39 +126,7 @@
   opacity: 1;
 }
 </style>
-<script>
-(function() {
-  "use strict";
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
-	
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
-}
-</script>
 
   </head>
   <body>
@@ -212,5 +180,33 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
       <i class="bi bi-arrow-up-short"></i>
     </a>
+		
+<script>
+(function() {
+  "use strict";
+
+  const select = (el, all = false) => {
+    el = el.trim()
+    if (all) {
+      return [...document.querySelectorAll(el)]
+    } else {
+      return document.querySelector(el)
+    }
+  }
+	
+  let backtotop = select('.back-to-top')
+  if (backtotop) {
+    const toggleBacktotop = () => {
+      if (window.scrollY > 100) {
+        backtotop.classList.add('active')
+      } else {
+        backtotop.classList.remove('active')
+      }
+    }
+    window.addEventListener('load', toggleBacktotop)
+    onscroll(document, toggleBacktotop)
+  }
+}
+</script>
   </body>
 </html>
