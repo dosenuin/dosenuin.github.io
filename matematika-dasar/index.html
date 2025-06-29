@@ -159,6 +159,31 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.jawaban {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  counter-increment: soal-counter;
+}
+
+.jawaban::before {
+  content: "Soal";
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .sdg-turunan::before {
 	content: "SDG " counter(sdg-turunan-counter);
 	position: absolute;
@@ -254,7 +279,12 @@ $e^{0,05t}$: Faktor pertumbuhan eksponensial (menyesuaikan inflasi).</li>
 <li>Hitung laju perubahan UMR terhadap waktu pada $t=10$ tahun.</li>
 <li>Interpretasikan hasilnya dalam konteks kebijakan ekonomi.</li>
 </ol>
+<div class="jawaban">
+<p class="h5">Soal 1: Hitung Laju Perubahan UMR di Tahun ke-10</p>
+<p class="h5">Soal 2: Interpretasi Kebijakan</p>
 </div>
+</div>
+
 <p class="sdg-turunan h4">Tanpa Kelaparan</p>
 <p class="sdg-turunan h4">Kehidupan Sehat dan Sejahtera</p>
 <p class="sdg-turunan h4">Pendidikan Berkualitas</p>
