@@ -135,7 +135,7 @@
       return document.querySelector(el)
     }
   }
-	
+  
   let backtotop = select('.back-to-top')
   if (backtotop) {
     const toggleBacktotop = () => {
@@ -146,8 +146,17 @@
       }
     }
     window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
+    document.addEventListener('scroll', toggleBacktotop) // Diperbaiki di sini
   }
+
+  // Tambahkan ini untuk fungsi klik tombol
+  document.querySelector('.back-to-top').addEventListener('click', (e) => {
+    e.preventDefault()
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
 </script>
 
   </head>
