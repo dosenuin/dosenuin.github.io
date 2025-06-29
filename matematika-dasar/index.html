@@ -121,38 +121,6 @@
   color: #fff;
 }
 </style>
-<script>
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
-  
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 50) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    document.addEventListener('scroll', toggleBacktotop) // Diperbaiki di sini
-  }
-
-  // Tambahkan ini untuk fungsi klik tombol
-  document.querySelector('.back-to-top').addEventListener('click', (e) => {
-    e.preventDefault()
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  })
-</script>
 
   </head>
   <body>
