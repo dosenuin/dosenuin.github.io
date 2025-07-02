@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<!-- dosenuin.github.io/matematika-dasar -->
+<html lang="id-ID">
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -288,8 +289,50 @@ $e^{0,05t}$: Faktor pertumbuhan eksponensial (menyesuaikan inflasi).</li>
 </ol>
 </div>
 <div class="pembahasan">
-<p class="h5">Soal 1: Hitung laju perubahan UMR terhadap waktu pada $t=10$ tahun.</p>
-<p class="h5">Soal 2: Interpretasikan hasilnya dalam konteks kebijakan ekonomi.</p>
+    <h1>Soal 1: Hitung Laju Perubahan UMR di Tahun ke-10</h1>
+    
+    <h2>Apa yang Ditanyakan?</h2>
+    <p>Anda diminta menghitung seberapa cepat UMR naik tepat di tahun ke-10 (2033).</p>
+    
+    <div class="solution">
+        <h2>Langkah Penyelesaian:</h2>
+        
+        <p>1. <strong>Cari turunan $I(t)$</strong> (laju perubahan sesaat):</p>
+        <p>$$
+        \frac{dI}{dt} = 2,\!5 \text{ juta} \cdot 0.05 \cdot e^{0.05t} = 125,\!000 \cdot e^{0.05t}
+        $$</p>
+        
+        <p>2. <strong>Hitung pada $t=10$:</strong></p>
+        <p>$$
+        \left.\frac{dI}{dt}\right|_{t=10} = 125,\!000 \cdot e^{0.5} \approx 125,\!000 \cdot 1.6487 \approx \textbf{Rp 206,\!088/tahun}
+        $$</p>
+    </div>
+    
+    <h2>Artinya:</h2>
+    <ul>
+        <li>Di tahun ke-10, UMR meningkat <span class="highlight">Rp 206.088 per tahun</span>.</li>
+        <li>Jika inflasi tahun 2033 adalah 5%, tetapi kenaikan UMR hanya Rp 206.088 (dari UMR tahun ke-10: $2,\!5 \text{ juta} \cdot e^{0.5} \approx 4,\!12 \text{ juta}$), maka:
+        $$
+        \frac{206,\!088}{4,\!12 \text{ juta}} \approx 5\% \text{ (cocok dengan inflasi)}
+        $$</li>
+    </ul>
+    
+    <h1>Soal 2: Interpretasi Kebijakan</h1>
+    
+    <h2>Apa Maknanya?</h2>
+    <ol>
+        <li><strong>Proteksi Daya Beli:</strong>
+            <ul>
+                <li>Kenaikan UMR sebesar 5% per tahun <span class="highlight">hanya mempertahankan daya beli</span> pekerja (tidak meningkatkan kesejahteraan riil).</li>
+                <li>Jika ingin meningkatkan kesejahteraan, UMR harus naik <span class="highlight">lebih dari laju inflasi</span>.</li>
+            </ul>
+        </li>
+        <li><strong>Warning untuk Pemerintah:</strong>
+            <ul>
+                <li>Jika inflasi sesungguhnya di tahun ke-10 <span class="highlight">lebih tinggi dari 5%</span> (misal 7%), pekerja akan <span class="highlight">semakin miskin</span> karena UMR tidak cukup mengejar kenaikan harga.</li>
+            </ul>
+        </li>
+    </ol>
 </div>
 
 <p class="sdg-turunan h4">Tanpa Kelaparan</p>
