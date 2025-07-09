@@ -206,7 +206,7 @@ body {
 }
 
 .contoh::before {
-  content: "Contoh";
+  content: "Contoh" ;
   position: absolute;
   top: -12px;
   left: 20px;
@@ -225,7 +225,7 @@ body {
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: soal-counter;
+  counter-increment: definisi-counter;
   background-color: #f8fafc; 
   border-left: 4px solid #3b82f6; 
   padding: 1.5rem;
@@ -234,7 +234,35 @@ body {
 }
 
 .definisi::before {
-  content: "Contoh";
+  content: "Definisi"  counter(definisi-counter);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.aturan-turunan {
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  counter-increment: aturan-turunan-counter;
+  background-color: #f8fafc; 
+  border-left: 4px solid #3b82f6; 
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  color: #1e293b;
+}
+
+.aturan-turunan::before {
+  content: "Definisi"  counter(aturan-turunan-counter);
   position: absolute;
   top: -12px;
   left: 20px;
@@ -343,8 +371,8 @@ body {
 <p>Turunan $P'(t)=6t+2$ menunjukkan seberapa cepat hasil panen meningkat tiap tahun.</p>
 </div>
 <p class="h4">Definisi</p>
-<p>Turunan dari $f(x)$ yaitu $f'(x)$ didefinisikan melalui pendekatan limit.</p>
 <div class="definisi">
+<p>Turunan dari $f(x)$ yaitu $f'(x)$ didefinisikan melalui pendekatan limit.</p>
 <p>$$f'(x) = \lim_{h\to 0} \dfrac{f(x+h) - f(x)}{h}$$</p>
 </div>
 <div class="contoh">
