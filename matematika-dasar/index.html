@@ -242,7 +242,7 @@ body {
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: soal-counter;
+  counter-increment: turunan;
   background-color: #f8fafc; 
   border-left: 4px solid #3b82f6; 
   padding: 1.5rem;
@@ -251,7 +251,7 @@ body {
 }
 
 .contoh::before {
-  content: "Contoh" ;
+  content: "Contoh " counter(turunan) " Turunan";
   position: absolute;
   top: -12px;
   left: 20px;
@@ -270,7 +270,7 @@ body {
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: definisi-counter;
+  counter-increment: turunan;
   background-color: #f8fafc; 
   border-left: 4px solid #3b82f6; 
   padding: 1.5rem;
@@ -279,7 +279,7 @@ body {
 }
 
 .definisi::before {
-  content: "Definisi "  counter(definisi-counter);
+  content: "Definisi "  counter(Turunan) " Turunan";
   position: absolute;
   top: -12px;
   left: 20px;
@@ -298,7 +298,7 @@ body {
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: aturan-turunan-counter;
+  counter-increment: turunan;
   background-color: #f8fafc; 
   border-left: 4px solid #3b82f6; 
   padding: 1.5rem;
@@ -307,7 +307,7 @@ body {
 }
 
 .aturan-turunan::before {
-  content: "Aturan "  counter(aturan-turunan-counter) " Turunan";
+  content: "Aturan "  counter(turunan) " Turunan";
   position: absolute;
   top: -12px;
   left: 20px;
@@ -482,7 +482,7 @@ dalam satuan ribu liter, dan $t$ adalah waktu dalam jam sejak pompa aktif.
 <p class="h5">Contoh SDGs (SDG 3 - Good Health):</p>
 <p> Fungsi penyebaran penyakit: $I(t) = \sqrt{1+2e^{-t}}.$ Berapa cepat perubahan penyebaran penyakit setelah intervensi?</p>
 <p> Misalkan $u = 1+2e^{-t}.$ Kita dapatkan $I(t)=\sqrt{u}=u^{1/2}.$</p>
-<p> $$ \dfrac{dI}{dt} = \dfrac{dI}{du}\cdot \dfrac{du}{dt} = \dfrac{1}{2}u^{-1/2}(-2e^{-t}) = \dfrac{1}{2}\dfrac{-2e^{-t}}{\sqrt{1+2e^{-t}}}.$$</p>
+<p> $$ \dfrac{dI}{dt} = \dfrac{dI}{du}\cdot \dfrac{du}{dt} = \dfrac{1}{2}u^{-1/2}(-2e^{-t}) = \dfrac{-2e^{-t}}{2\sqrt{1+2e^{-t}}}.$$</p>
 </div>
 <p class="h4">Turunan Kedua</p>
 <p><b>Tujuan:</b> Menganalisis percepatan perubahan atau cek cekung/cembung grafik.</p>
