@@ -24,33 +24,6 @@
 						]
 				}
 		};
-// MODE KOREKSI
-document.addEventListener('DOMContentLoaded', function() {
-    let hiddenTime;
-    let timeoutId;
-    const refreshAfter = 1*60*1000; // 1 menit dalam milidetik (60 * 1000)
-    function handleVisibilityChange() {
-        if (document.hidden) {
-            // Tab menjadi tidak terlihat, catat waktu
-            hiddenTime = Date.now();
-            // Set timeout untuk refresh
-            timeoutId = setTimeout(() => {
-                window.location.reload();
-            }, refreshAfter);
-        } else {
-            // Tab kembali terlihat, clear timeout jika ada
-            if (timeoutId) {
-                clearTimeout(timeoutId);
-            }
-        }
-    }
-    // Tambahkan event listener untuk visibility change
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    // Juga handle kasus ketika halaman sudah dalam keadaan hidden saat load
-    if (document.hidden) {
-        handleVisibilityChange();
-    }
-});
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
@@ -89,6 +62,7 @@ mjx-table {
 			}
 body {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
+		counter-reset: bab subbab teorema;
 }
 /* Heading Styles */
 .h1 {
@@ -112,6 +86,8 @@ body {
     line-height: 1.3;
     position: relative;
     padding-left: 1rem;
+		counter-increment: bab;
+		counter-reset: subbab teorema; /* Reset lower level counters */
 }
 .h2:before {
     content: "";
@@ -130,6 +106,8 @@ body {
     color: #2980b9;
     margin: 1.1rem 0;
     line-height: 1.4;
+		counter-increment: subbab;
+		counter-reset: teorema; /* Reset theorem counter for each section */
 }
 .h4 {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
@@ -175,7 +153,7 @@ body {
   counter-increment: soal-counter;
 }
 .soal::before {
-  content: "Soal";
+  content: "Soal " counter(soal-counter);
   position: absolute;
   top: -12px;
   left: 20px;
@@ -193,7 +171,6 @@ body {
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: soal-counter;
   background-color: #f8fafc; 
   border-left: 4px solid #3b82f6; 
   padding: 1.5rem;
@@ -219,7 +196,7 @@ body {
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: turunan;
+  counter-increment: teorema;
   background-color: #f8fafc; 
   border-left: 4px solid #3b82f6; 
   padding: 1.5rem;
@@ -227,7 +204,7 @@ body {
   color: #1e293b;
 }
 .contoh::before {
-  content: "Contoh " counter(turunan) " Turunan";
+  content: "Contoh " counter(bab) "." counter(subbab) "." counter(teorema);
   position: absolute;
   top: -12px;
   left: 20px;
@@ -245,7 +222,7 @@ body {
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: turunan;
+  counter-increment: teorema;
   background-color: #f8fafc; 
   border-left: 4px solid #3b82f6; 
   padding: 1.5rem;
@@ -253,7 +230,7 @@ body {
   color: #1e293b;
 }
 .definisi::before {
-  content: "Definisi "  counter(turunan) " Turunan";
+  content: "Definisi " counter(bab) "." counter(subbab) "." counter(teorema);
   position: absolute;
   top: -12px;
   left: 20px;
@@ -265,21 +242,72 @@ body {
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.aturan-turunan {
+.aturan {
   padding: 1.5rem;
   margin: 1.5rem 0;
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: turunan;
+  counter-increment: teorema;
   background-color: #f8fafc; 
   border-left: 4px solid #3b82f6; 
   padding: 1.5rem;
   border-radius: 0 8px 8px 0;
   color: #1e293b;
 }
-.aturan-turunan::before {
-  content: "Aturan "  counter(turunan) " Turunan";
+.aturan::before {
+  content: "Aturan " counter(bab) "." counter(subbab) "." counter(teorema);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.teorema {
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  counter-increment: teorema;
+  background-color: #f8fafc; 
+  border-left: 4px solid #3b82f6; 
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  color: #1e293b;
+}
+.teorema::before {
+  content: "Teorema " counter(bab) "." counter(subbab) "." counter(teorema);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.bukti {
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  background-color: #f8fafc; 
+  border-left: 4px solid #3b82f6; 
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  color: #1e293b;
+}
+.bukti::before {
+  content: "Bukti " counter(bab) "." counter(subbab) "." counter(teorema);
   position: absolute;
   top: -12px;
   left: 20px;
@@ -311,6 +339,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
   counter-increment: sdg-turunan-counter;
+	counter-reset: soal-counter;
 }
 .sdg-integral::before {
 	content: "SDG " counter(sdg-integral-counter);
@@ -332,7 +361,9 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
   counter-increment: sdg-integral-counter;
+	counter-reset: soal-counter;
 }
+
 @media (max-width: 768px) {
   .h1 {
     font-size: 2.2rem;
@@ -434,19 +465,19 @@ body {
 	<p>
 		<b>Tujuan:</b> Mengajarkan turunan fungsi dasar dan gabungan.
 	</p>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Turunan Konstanta</p>
 		<p>
 			$$\begin{align*} y &=k \\ y' &= \dfrac{d(k)}{dx} = 0.\end{align*}$$
 		</p>
 	</div>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Turunan Pangkat</p>
 		<p>
 			$$\begin{align*} y &=x^n \\ y' &= \dfrac{d(x^n)}{dx} = nx^{n-1}.\end{align*}$$
 		</p>
 	</div>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Turunan Trigonometri</p>
 		<p>
 			$$\begin{align*}y &=\sin x \\ y' &= \dfrac{d(\sin x)}{dx} = \cos x. \end{align*}$$
@@ -455,31 +486,31 @@ body {
 			$$\begin{align*} y &=\cos x \\ y' &= \dfrac{d(\cos x)}{dx} = - \sin x. \end{align*} $$
 		</p>
 	</div>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Turunan Eksponensial</p>
 		<p>
 			$$\begin{align*} y &=e^{kx} \\ y' &= \dfrac{d(e^{kx})}{dx} = ke^{kx}.\end{align*}$$
 		</p>
 	</div>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Turunan Logaritma</p>
 		<p>
 			$$\begin{align*} y &=\log_{a}x \\ y' &= \dfrac{d(\log_{a}x)}{dx} = \dfrac{1}{x\ln a}.\end{align*}$$
 		</p>
 	</div>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Aturan Penjumlahan</p>
 		<p>
 			$$ (f+g)'=f'+g'$$
 		</p>
 	</div>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Aturan Perkalian</p>
 		<p>
 			$$ (fg)'=f'\cdot g+f\cdot g'$$
 		</p>
 	</div>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Aturan Pembagian</p>
 		<p>
 			$$ \left( \dfrac{f}{g}\right)'=\dfrac{f'\cdot g - f\cdot g'}{g^2}$$
@@ -489,7 +520,7 @@ body {
 	<p>
 		<b>Tujuan:</b> Menyelesaikan turunan komposisi fungsi.
 	</p>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<p class="h5">Aturan Rantai</p>
 		<p>
 			$$ \begin{align*} \dfrac{dy}{dx} &=\dfrac{dy}{du}\cdot \dfrac{du}{dx} \\ \dfrac{d}{dx}f(g(x)) &= f'(g(x))\cdot g'(x).\end{align*}$$
@@ -511,7 +542,7 @@ body {
 	<p>
 		<b>Tujuan:</b> Menganalisis percepatan perubahan atau cek cekung/cembung grafik.
 	</p>
-	<div class="aturan-turunan">
+	<div class="aturan turunan">
 		<ol>
 			<li>$f(x)>0:$ fungsi cekung ke atas → percepatan naik</li>
 			<li>
@@ -530,7 +561,7 @@ body {
 		</div>
 		<p class="h4">Turunan Implisit</p>
 		<p><b>Tujuan:</b> Menghitung turunan saat fungsi tidak eksplisit dalam bentuk $y=f(x).$</p>
-		<div class="aturan-turunan">
+		<div class="aturan turunan">
 			<p>Langkah:</p>
 			<ol>
 				<li> Turunkan kedua sisi terhadap $x,$ anggap $y$ sebagai fungsi dari $x.$</li>
@@ -694,6 +725,35 @@ body {
 			<div class="text-center">
 			<a href="https://info.flagcounter.com/ude3"><img src="https://s01.flagcounter.com/count/ude3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 			</div>
+			<script>
+				// MODE KOREKSI
+				document.addEventListener('DOMContentLoaded', function() {
+						let hiddenTime;
+						let timeoutId;
+						const refreshAfter = 1*60*1000; // 1 menit dalam milidetik (60 * 1000)
+						function handleVisibilityChange() {
+								if (document.hidden) {
+										// Tab menjadi tidak terlihat, catat waktu
+										hiddenTime = Date.now();
+										// Set timeout untuk refresh
+										timeoutId = setTimeout(() => {
+												window.location.reload();
+										}, refreshAfter);
+								} else {
+										// Tab kembali terlihat, clear timeout jika ada
+										if (timeoutId) {
+												clearTimeout(timeoutId);
+										}
+								}
+						}
+						// Tambahkan event listener untuk visibility change
+						document.addEventListener('visibilitychange', handleVisibilityChange);
+						// Juga handle kasus ketika halaman sudah dalam keadaan hidden saat load
+						if (document.hidden) {
+								handleVisibilityChange();
+						}
+				});
+			</script>
 			</body>
 			</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
