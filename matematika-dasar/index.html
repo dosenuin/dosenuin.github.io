@@ -62,7 +62,7 @@ mjx-table {
 			}
 body {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
-		counter-reset: bab subbab teorema referensi soal-counter sdg-integral-counter sdg-turunan-counter;
+		counter-reset: bab subbab teorema referensi soal-counter sdg;
 }
 /* Heading Styles */
 .h1 {
@@ -87,7 +87,7 @@ body {
     position: relative;
     padding-left: 1rem;
 		counter-increment: bab;
-		counter-reset: subbab teorema; /* Reset lower level counters */
+		counter-reset: subbab teorema sdg; /* Reset lower level counters */
 }
 .h2:before {
     content: "";
@@ -143,29 +143,7 @@ body {
   background: #0678e3;
   color: #fff;
 }
-.soal {
-  background-color: #f8f9fa;
-  border-left: 4px solid #3498db;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  position: relative;
-  counter-increment: soal-counter;
-}
-.soal::before {
-  content: "Soal " counter(soal-counter);
-  position: absolute;
-  top: -12px;
-  left: 20px;
-  background-color: #3498db;
-  color: white;
-  padding: 0.25rem 1rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+
 .pembahasan {
   padding: 1.5rem;
   margin: 1.5rem 0;
@@ -320,8 +298,8 @@ body {
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.sdg-turunan::before {
-	content: "SDG " counter(sdg-turunan-counter);
+.sdg::before {
+	content: "SDG " counter(sdg);
 	position: absolute;
 	left: -1rem;
   background-color: #3498db;
@@ -332,36 +310,14 @@ body {
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.sdg-turunan {
+.sdg {
   background-color: #f8f9fa;
 	padding: 1rem 4.5rem;
   margin: 1.5rem 0;
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
-  counter-increment: sdg-turunan-counter;
-	counter-reset: soal-counter;
-}
-.sdg-integral::before {
-	content: "SDG " counter(sdg-integral-counter);
-	position: absolute;
-	left: -1rem;
-  background-color: #3498db;
-  color: white;
-  padding: 0.25rem 1rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.sdg-integral {
-  background-color: #f8f9fa;
-	padding: 1rem 4.5rem;
-  margin: 1.5rem 0;
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  position: relative;
-  counter-increment: sdg-integral-counter;
+  counter-increment: sdg;
 	counter-reset: soal-counter;
 }
 .referensi {
@@ -386,7 +342,29 @@ body {
   <!-- box-shadow: 0 2px 4px rgba(0,0,0,0.1); -->
 	text-decoration: none;
 }
-
+.soal {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  counter-increment: soal-counter;
+}
+.soal::before {
+  content: "Soal " counter(sdg) "." counter(soal-counter);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
 @media (max-width: 768px) {
   .h1 {
@@ -626,7 +604,7 @@ body {
 		<p class="h4">Teorema Rata-rata</p>
 		<p class="h4">Anti-turunan</p>
 		<p class="h3">Eksplorasi SDGs</p>
-		<p class="sdg-turunan h4">Tanpa Kemiskinan</p>
+		<p class="sdg h4">Tanpa Kemiskinan</p>
 		<div class="soal">
 			<p class="h5">Menghitung Laju Pertumbuhan Pendapatan Minimum</p>
 			<p>
@@ -721,44 +699,44 @@ body {
 						</li>
 					</ol>
 				</div>
-				<p class="sdg-turunan h4">Tanpa Kelaparan</p>
-				<p class="sdg-turunan h4">Kehidupan Sehat dan Sejahtera</p>
-				<p class="sdg-turunan h4">Pendidikan Berkualitas</p>
-				<p class="sdg-turunan h4">Kesetaraan Gender</p>
-				<p class="sdg-turunan h4">Air Bersih dan Sanitasi Layak</p>
-				<p class="sdg-turunan h4">Energi Bersih dan Terjangkau</p>
-				<p class="sdg-turunan h4">Pekerjaan Layak dan Pertumbuhan Ekonomi</p>
-				<p class="sdg-turunan h4">Industri, Inovasi, dan Infrastruktur</p>
-				<p class="sdg-turunan h4">Berkurangnya Kesenjangan</p>
-				<p class="sdg-turunan h4">Kota dan Permukiman yang Berkelanjutan</p>
-				<p class="sdg-turunan h4">Konsumsi dan Produksi yang Bertanggung Jawab</p>
-				<p class="sdg-turunan h4">Penanganan Perubahan Iklim</p>
-				<p class="sdg-turunan h4">Ekosistem Lautan</p>
-				<p class="sdg-turunan h4">Ekosistem Daratan</p>
-				<p class="sdg-turunan h4">Perdamaian, Keadilan, dan Kelembagaan yang Tangguh</p>
-				<p class="sdg-turunan h4">Kemitraan untuk Mencapai Tujuan</p>
+				<p class="sdg h4">Tanpa Kelaparan</p>
+				<p class="sdg h4">Kehidupan Sehat dan Sejahtera</p>
+				<p class="sdg h4">Pendidikan Berkualitas</p>
+				<p class="sdg h4">Kesetaraan Gender</p>
+				<p class="sdg h4">Air Bersih dan Sanitasi Layak</p>
+				<p class="sdg h4">Energi Bersih dan Terjangkau</p>
+				<p class="sdg h4">Pekerjaan Layak dan Pertumbuhan Ekonomi</p>
+				<p class="sdg h4">Industri, Inovasi, dan Infrastruktur</p>
+				<p class="sdg h4">Berkurangnya Kesenjangan</p>
+				<p class="sdg h4">Kota dan Permukiman yang Berkelanjutan</p>
+				<p class="sdg h4">Konsumsi dan Produksi yang Bertanggung Jawab</p>
+				<p class="sdg h4">Penanganan Perubahan Iklim</p>
+				<p class="sdg h4">Ekosistem Lautan</p>
+				<p class="sdg h4">Ekosistem Daratan</p>
+				<p class="sdg h4">Perdamaian, Keadilan, dan Kelembagaan yang Tangguh</p>
+				<p class="sdg h4">Kemitraan untuk Mencapai Tujuan</p>
 				<p class="h2" id="integral">Integral</p>
 				<p class="h3">Pendahuluan</p>
 				<p class="h3">Konsep Dasar</p>
 				<p class="h3">Aplikasi Lanjut</p>
 				<p class="h3">Eksplorasi SDGs</p>
-				<p class="sdg-integral h4">Tanpa Kemiskinan</p>
-				<p class="sdg-integral h4">Tanpa Kelaparan</p>
-				<p class="sdg-integral h4">Kehidupan Sehat dan Sejahtera</p>
-				<p class="sdg-integral h4">Pendidikan Berkualitas</p>
-				<p class="sdg-integral h4">Kesetaraan Gender</p>
-				<p class="sdg-integral h4">Air Bersih dan Sanitasi Layak</p>
-				<p class="sdg-integral h4">Energi Bersih dan Terjangkau</p>
-				<p class="sdg-integral h4">Pekerjaan Layak dan Pertumbuhan Ekonomi</p>
-				<p class="sdg-integral h4">Industri, Inovasi, dan Infrastruktur</p>
-				<p class="sdg-integral h4">Berkurangnya Kesenjangan</p>
-				<p class="sdg-integral h4">Kota dan Permukiman yang Berkelanjutan</p>
-				<p class="sdg-integral h4">Konsumsi dan Produksi yang Bertanggung Jawab</p>
-				<p class="sdg-integral h4">Penanganan Perubahan Iklim</p>
-				<p class="sdg-integral h4">Ekosistem Lautan</p>
-				<p class="sdg-integral h4">Ekosistem Daratan</p>
-				<p class="sdg-integral h4">Perdamaian, Keadilan, dan Kelembagaan yang Tangguh</p>
-				<p class="sdg-integral h4">Kemitraan untuk Mencapai Tujuan</p>
+				<p class="sdg h4">Tanpa Kemiskinan</p>
+				<p class="sdg h4">Tanpa Kelaparan</p>
+				<p class="sdg h4">Kehidupan Sehat dan Sejahtera</p>
+				<p class="sdg h4">Pendidikan Berkualitas</p>
+				<p class="sdg h4">Kesetaraan Gender</p>
+				<p class="sdg h4">Air Bersih dan Sanitasi Layak</p>
+				<p class="sdg h4">Energi Bersih dan Terjangkau</p>
+				<p class="sdg h4">Pekerjaan Layak dan Pertumbuhan Ekonomi</p>
+				<p class="sdg h4">Industri, Inovasi, dan Infrastruktur</p>
+				<p class="sdg h4">Berkurangnya Kesenjangan</p>
+				<p class="sdg h4">Kota dan Permukiman yang Berkelanjutan</p>
+				<p class="sdg h4">Konsumsi dan Produksi yang Bertanggung Jawab</p>
+				<p class="sdg h4">Penanganan Perubahan Iklim</p>
+				<p class="sdg h4">Ekosistem Lautan</p>
+				<p class="sdg h4">Ekosistem Daratan</p>
+				<p class="sdg h4">Perdamaian, Keadilan, dan Kelembagaan yang Tangguh</p>
+				<p class="sdg h4">Kemitraan untuk Mencapai Tujuan</p>
 			</div>
 			<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 			<div class="text-center">
