@@ -296,27 +296,11 @@ body {
 	counter-reset: soal-counter;
 }
 .referensi {
-  background-color: #f8f9fa;
-	padding: 0.2rem 0.2rem;
-  <!-- margin: 1.5rem 0; -->
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 2px rgba(128,128,128,0.5);
-  <!-- position: relative; -->
   counter-increment: referensi;
 	text-decoration: none;
-
 }
 .referensi::after {
-	content: " [ " counter(referensi) " ]";
-	<!-- position: absolute; -->
-	<!-- left: -1rem; -->
-  background-color: #808080;
-  <!-- color: white; -->
-  padding: 0.5rem 0.5rem;
-  <!-- border-radius: 20px; -->
-  font-size: 0.85rem;
-  font-weight: bold;
-  <!-- box-shadow: 0 2px 4px rgba(0,0,0,0.1); -->
+	content: " [" counter(referensi) "]";
 	text-decoration: none;
 }
 .soal {
@@ -434,7 +418,7 @@ body {
 		<p class="h5"> SDG 2: Zero Hunger</p>
 		<p> Misalnya, dalam konteks pertanian, hasil panen per hektar bisa berhubungan dengan faktor-faktor seperti teknologi pertanian, cuaca, dan praktik pertanian. Dalam jangka pendek, produksi bisa meningkat dengan sangat cepat, tetapi pada akhirnya, pertumbuhan panen akan mencapai batas optimalnya (maksimum) dan melambat. Fungsi panen dinyatakan sebagai $$ P(t) = -3t^2 + 24t $$ dengan $P$ menyatakan hasil panen dalam ton per hektar dan $t$ menyatakan waktu dalam tahun.</p>
 		<p> Berapakah pertumbuhan panen pada tahun ketiga? </p>
-		<p class="referensi"> <a class="referensi" href="#"></a>Jika diperhatikan kurva fungsi di seperti di bawah ini jelas gradien yang akan didapatkan bernilai positif.</p>
+		<p> <a class="btn referensi" href="#"></a>Jika diperhatikan kurva fungsi di seperti di bawah ini jelas gradien yang akan didapatkan bernilai positif.</p>
 	</div>
 	<p class="h3">Konsep Dasar</p>
 	<p>
