@@ -62,7 +62,7 @@ mjx-table {
 			}
 body {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
-		counter-reset: bab subbab teorema referensi;
+		counter-reset: bab subbab teorema referensi soal-counter sdg-integral-counter sdg-turunan-counter;
 }
 /* Heading Styles */
 .h1 {
@@ -179,7 +179,7 @@ body {
   color: #1e293b;
 }
 .pembahasan::before {
-  content: "Pembahasan";
+  content: "Pembahasan " counter(soal-counter);
   position: absolute;
   top: -12px;
   left: 20px;
@@ -374,16 +374,17 @@ body {
   counter-increment: referensi;
 }
 .referensi::after {
-	content: "LIHAT[" counter(referensi) "]";
+	content: "LIHAT [" counter(referensi) "]";
 	<!-- position: absolute; -->
 	<!-- left: -1rem; -->
-  background-color: #3498db;
+  background-color: #808080;
   <!-- color: white; -->
   padding: 0.2rem 0.1rem;
   <!-- border-radius: 20px; -->
   font-size: 0.85rem;
   font-weight: bold;
   <!-- box-shadow: 0 2px 4px rgba(0,0,0,0.1); -->
+	text-decoration: none;
 }
 
 
