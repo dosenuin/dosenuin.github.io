@@ -354,14 +354,17 @@ body {
 }
 .gambar-container {
   position: relative;
-  margin: 2rem 0;
+  margin: 2.5rem auto; /* Pusatkan container */
   counter-increment: gambar-counter;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Pusatkan horizontal */
+  max-width: fit-content;
 }
 
 .gambar-container::after {
   content: "Gambar " counter(gambar-counter);
   display: inline-block;
-  text-align: center;
   margin-top: 0.75rem;
   font-size: 0.85rem;
   font-weight: bold;
@@ -370,17 +373,22 @@ body {
   background-color: #3b82f6;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  position: relative;
+  text-align: center;
+  width: auto;
 }
 
 .gambar-container img {
-  display: block;
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  display: block;
 	padding: 1rem;
+}
+
+body {
+  counter-reset: gambar-counter;
 }
 
 /* Untuk mengatur counter global */
@@ -491,7 +499,7 @@ body {
 		<p class="h5">Contoh SDGs (SDG 6 – Clean Water and Sanitation):</p>
 		<p>
 			 Misalkan jumlah air bersih yang disalurkan ke suatu desa dinyatakan dengan fungsi: $$W(t)=\dfrac{1}{t}$$
-			<div class="overflow-auto text-center">
+			<div class="gambar-container">
 				<img src="//i.upmath.me/svgb/bZCxboQwDIZ3nsLDDSAh9ZB6S6sM7dBKfYEbjhsCmMMlJChxVLgo714O2uqGerH9_b9l6S8rvJAOTP11pJq9xZgAlBuVE7l4WnYAJlYowruVLfXw5vXFUcxX6VaTkhUqEcrWGNaG0dEV4Sh79pCy7LzO7tzzv-4PPyjZwQtZeEXrqIP007P8PVR4Qd3AaJzQxnIHX-h4k6aBtNjnS5eTOOw3OP_A-QaLBZ2TlZeyaUZl-FQpjzlwR3WfQ2MGufiLp8fDGULxkE5ZFp__DrbnqNnOYXdMORNla2Udihg47tbIFn0LLFnH-0S_AQ" alt="">
 			</div>
 			 dalam satuan ribu liter, dan $t$ adalah waktu dalam jam sejak pompa aktif.
@@ -648,7 +656,7 @@ body {
 			<p>
 				 $$I(t)=2,5\text{juta}\cdot e^{0,05t}$$
 			</p>
-			<div class="overflow-auto text-center">
+			<div class="gambar-container">
 				<img src="//i.upmath.me/svgb/bZAxa8MwEIV3_4obMthBBBHqpUVrS4csgdIhTkGOL7ZqRTL2icoR_u91rLZk6C139713cLyixFqZQKq9dupErscpASgilV4N02HeAUiRRhFeenlWLTw7Uw9qYot0K69liVqE4mwtGUs4qCvCu2zJQUqycSa7c4__ut92e0g_Hclfq8YaTQWdHYSxPTXwhQNFyV-UEZzNXXqR8wjHHzhGOLNjsgiFrKpOWzqU2iEDatSpZVDZi7wdPD7wI4TtJl-j71K-4fnaZ9PT32V8Aw31Y1i9ppSJLcvxI3DGc5pWS16zIaaVLON9nN8" alt="upmath">
 			</div>
 			<ul>
