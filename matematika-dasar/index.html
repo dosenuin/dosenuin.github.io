@@ -592,20 +592,26 @@ body {
 		<b>Tujuan:</b> Mengajarkan turunan fungsi dasar dan gabungan.
 	</p>
 	<p> Dari definisi turunan melalui limit, dapat diperoleh beberapa aturan yang akan mempercepat dalam menentukan turunan sebuah fungsi. Turunan dapat diasumsikan sebagai sebuah operator dimana turunan mempunyai input fungsi $f(x)$ dan akan dihasilkan output fungsi turunan yaitu $f'(x).$ Turunan sebagai operator sering dinotasikan sebagai $D_x.$ Sekarang kita punya 3 notasi untuk turunan yaitu $$\begin{align*} f'(x) \text{ atau } D_xf(x) \text{ atau } \dfrac{dy}{dx} \end{align*} $$</p>
-	<div class="aturan">
-		<p class="h5">Turunan Konstanta</p>
+	<div class="teorema">
+		<p class="h5">Aturan Turunan Konstanta</p>
 		<p>
 			$$\begin{align*} y &=k \\ y' &= \dfrac{d(k)}{dx} = 0.\end{align*}$$
 		</p>
 	</div>
-	<div class="aturan">
-		<p class="h5">Turunan Pangkat</p>
+	<div class="bukti">
+		<p> $$ \begin{align*} f'(x) = \lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h} = \lim_{h\to 0} \dfrac{x+h-x}{h} = \lim_{h\to 0} \dfrac{h}{h} = 1. \end{align*} $$</p>
+	</div>
+	<div class="teorema">
+		<p class="h5">Aturan Turunan Pangkat</p>
 		<p>
 			$$\begin{align*} y &=x^n \\ y' &= \dfrac{d(x^n)}{dx} = nx^{n-1}.\end{align*}$$
 		</p>
 		<p>
 			$$\begin{align*} y &=x^1 = x \\ y' &= \dfrac{d(x^1)}{dx} = 1x^{1-1} = 1.\end{align*}$$
 		</p>
+	</div>
+	<div class="bukti">
+		$$ \begin{align*} f'(x) &= \lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h} = \lim_{h\to 0} \dfrac{(x+h)^n-x^n}{h} \\ &= \lim_{h\to 0} \dfrac{x^n+\binom{n}{1}x^{n-1}h+\binom{n}{2}x^{n-2}h^2+\cdots+\binom{n}{n-1}xh^{n-1}+h^n-x^n}{h} \\ &= \lim_{h\to 0} \dfrac{h\left( \binom{n}{1}x^{n-1}+\binom{n}{2}x^{n-2}h+\cdots+\binom{n}{n-1}xh^{n-2}+h^{n-1} \right)}{h} \\ &= nx^{n-1} \end{align*} $$
 	</div>
 	<div class="aturan">
 		<p class="h5">Turunan Trigonometri</p>
