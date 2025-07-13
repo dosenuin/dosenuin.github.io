@@ -364,6 +364,15 @@ body {
   counter-increment: sdg-integral-counter;
 	counter-reset: soal-counter;
 }
+.referensi {
+  background-color: #f8f9fa;
+	padding: 1rem 4.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  <!-- position: relative; -->
+  counter-increment: referensi;
+}
 .referensi::before {
 	content: "[" counter(referensi) "]";
 	<!-- position: absolute; -->
@@ -376,15 +385,7 @@ body {
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.referensi {
-  background-color: #f8f9fa;
-	padding: 1rem 4.5rem;
-  margin: 1.5rem 0;
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  <!-- position: relative; -->
-  counter-increment: referensi;
-}
+
 
 @media (max-width: 768px) {
   .h1 {
