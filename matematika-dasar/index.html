@@ -272,6 +272,7 @@ body {
   font-size: 0.85rem;
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-top: 4px solid #3498db;
 }
 .sdg::before {
 	content: "SDG " counter(sdg);
@@ -574,7 +575,7 @@ body {
 		<p> Jika $f'(c)$ ada, maka $f(x)$ kontinu di titik $x=c.$</p>
 	</div>
 	<div class="bukti">
-		Akan ditunjukkan $\displaystyle \lim_{x\to c} f(x)=f(c).$ Pertama tulis $$ f(x) = f(c) +\dfrac{f(x)-f(x)}{x-c}\cdot (x-c)\hspace{1cm} x\ne c$$ Selanjutnya $$ \begin{align*} \lim_{x\to c} f(x) &= \lim_{x\to c} \left( f(c) +\dfrac{f(x)-f(x)}{x-c}\cdot (x-c)\right) \\ &= \lim_{x\to c} f(c) +\lim_{x\to c} \dfrac{f(x)-f(x)}{x-c}\cdot \lim_{x\to c} (x-c) \\ &= f(c) + f'(c)\cdot 0 \\ &= f(x) \hspace{1cm}\boxed{\text{ }} \end{align*} $$
+		Akan ditunjukkan $\displaystyle \lim_{x\to c} f(x)=f(c).$ Pertama tulis $$ f(x) = f(c) +\dfrac{f(x)-f(x)}{x-c}\cdot (x-c)\hspace{1cm} x\ne c$$ Selanjutnya $$ \begin{align*} \lim_{x\to c} f(x) &= \lim_{x\to c} \left( f(c) +\dfrac{f(x)-f(x)}{x-c}\cdot (x-c)\right) \\ &= \lim_{x\to c} f(c) +\lim_{x\to c} \dfrac{f(x)-f(x)}{x-c}\cdot \lim_{x\to c} (x-c) \\ &= f(c) + f'(c)\cdot 0 \\ &= f(x) \hspace{1cm}\boxed{\text{TERBUKTI}} \end{align*} $$
 	</div>
 	
 	<p class="h4">Aturan Turunan</p>
