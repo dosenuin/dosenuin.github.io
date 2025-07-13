@@ -27,6 +27,7 @@
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
+
 mjx-container {
   overflow-x: auto;
   overflow-y: hidden;
@@ -62,7 +63,7 @@ mjx-table {
 			}
 body {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
-		counter-reset: bab subbab teorema referensi soal-counter sdg;
+		counter-reset: bab subbab teorema referensi soal-counter sdg gambar-counter;
 }
 /* Heading Styles */
 .h1 {
@@ -87,7 +88,7 @@ body {
     position: relative;
     padding-left: 1rem;
 		counter-increment: bab;
-		counter-reset: subbab teorema sdg; /* Reset lower level counters */
+		counter-reset: subbab teorema sdg;
 }
 .h2:before {
     content: "";
@@ -107,7 +108,7 @@ body {
     margin: 1.1rem 0;
     line-height: 1.4;
 		counter-increment: subbab;
-		counter-reset: teorema; /* Reset theorem counter for each section */
+		counter-reset: teorema sdg; /* Reset theorem counter for each section */
 }
 .h4 {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
@@ -351,6 +352,37 @@ body {
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+.gambar-container {
+  position: relative;
+  margin: 2rem 0;
+  counter-increment: gambar-counter;
+}
+
+.gambar-container::after {
+  content: "Gambar " counter(gambar-counter);
+  display: block;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #1e293b;
+  padding: 0.25rem 0;
+}
+
+.gambar-container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-left: 4px solid #3b82f6;
+}
+
+/* Untuk mengatur counter global */
+body {
+  counter-reset: gambar-counter;
+}
 
 @media (max-width: 768px) {
   .h1 {
@@ -406,7 +438,7 @@ body {
 		Apa hubungan antara kecepatan mobil dan grafik posisinya? Bagaimana turunan membantu kita menemukan titik tertinggi atau terendah suatu fungsi? Jika Anda penasaran dengan jawabannya, mari selami konsep turunan—tools matematika yang memungkinkan kita 'membedah' perilaku fungsi dengan elegan.
 	</p>
 	<p>Turunan dapat dilihat sebagai perumuman dari gradien atau kemiringan. Pertama mari perhatikan gambar kurva di bawah ini.</p>
-	<div class="overflow-auto text-center">
+	<div class="gambar-container">
 		<img src="//i.upmath.me/svgb/tVVNj5swEL3nV_iQQ6Ilrg3-CGrpoZde2143e3CIA2gpRuB0QxH_vWMCbNJuJXar5hIx9ntv5s3Y3h30MSt0bHJTtXn2XXftt8-fupZ4Puce6RaLxQ62oF2Sm73K61jlGrUUk_7XLXZ7nWRFa7PHn2UW21Olu_smoqX10Pny1_SY6JrAO78QQ_qHrhpUmIN-h1VZ6uKAatvAtvbP3Z2HsqLQFap1GREnY072-fNhgdCuVDa9_7D56B0q9RTtcxU_escsz5EpVZzZJiLY93IoHj1lB5u6bB_Qiga-xNxDcisxXaPNBgHXFBU0HKIryokPBEPoPRg1ib5ekAIPl5isMUaxKWxl8hrofl9FCkyBGOc4hBQlwWKNAAKhrcByDF2RwBJjFAvPleFW5UjChHQIHjLMBpKb0E1FVzae9Es1cIIJyAsx2cO2Qe-YBPW_kLl5m-VQwJ3TkoLhA3vgcvScRTLcQlG9wBsa4B1UnSIAwfQUkSmQwGFpkTkenWH9R5-B4M5DyRkOxwygMf4YemP7Z6ozRnp1Ql2rJnU2hv6vuqtdXgrlo_ol9E-j_4ranTohk_NDyKnzSd3dG_eqiFNTRTVcBinSqnYMVp8tg8SVdWeWuZEUPpylNlFVVjut0lhTJN08JjEwBaJvgCDuXLbLeDkTL0e8H_ZnOPTheLTLZi5-O1ZCaa9P3TXVLs9z8eFt_lIQvAX8l5l4TgY8Y5f84RIMAP91Lp7e4gXh0ETw7y6dy-BPDtLLXNK-guMqXs-lCCYK_3KKSN9EoLhLZ5OwsRK4Val7MJhzYpqqOiuS5DTO1Q6es5tX8hc" alt="upmath">
 	</div>
 	<p>Garis yang melalui titik $P$ dan $Q$ disebut dengan garis potong atau <em>Secant Line</em>. Garis potong ini mempunyai gradien $$m_{\text{sec}}=\dfrac{y_2-y_1}{x_2-x_1}=\dfrac{f(c+h)-f(c)}{(c+h)-c}$$. Sekarang jika titik $Q$ didekatkan ke titik $P$ maka akan diperoleh sebuah garis dengan gradien $\displaystyle m_{\text{tan}}=\lim_{h\to 0}m_{\text{sec}}.$ Garis ini selanjutnya akan disebut sebagai garis singgung atau <em> Tangent Line.</em></p>
@@ -419,7 +451,7 @@ body {
 		<p> Misalnya, dalam konteks pertanian, hasil panen per hektar bisa berhubungan dengan faktor-faktor seperti teknologi pertanian, cuaca, dan praktik pertanian. Dalam jangka pendek, produksi bisa meningkat dengan sangat cepat, tetapi pada akhirnya, pertumbuhan panen akan mencapai batas optimalnya (maksimum) dan melambat. Fungsi panen dinyatakan sebagai $$ P(t) = -3t^2 + 24t $$ dengan $P$ menyatakan hasil panen dalam ton per hektar dan $t$ menyatakan waktu dalam tahun.</p>
 		<p> Berapakah pertumbuhan panen pada tahun ketiga? </p>
 		<p> Jika diperhatikan kurva fungsi di seperti di bawah ini jelas gradien yang akan didapatkan bernilai positif.<a class="btn referensi" href="#"></a></p>
-		<div class="overflow-auto text-center">
+		<div class="gambar-container">
 			<img src="//i.upmath.me/svgb/TZDNTsQgEMfvPAWHPayWGtvuauKKL9JiQsvIkmVp01KlEt5dEI3OZWb-ML_56HqQynirLp-TGuw6Q2i3ZeAaaMUQ6vIzd2oJLUoOa2VgoVclhAaCUoY_lLBnWt1VkyUIR3Oa96Cp37ldyMr2q2xJYajjQkx6tG2vVyDP5QsR45UrQ8vj0yPDe9-5QHzZ3HbutS7qQ_ThxowCYgEfLoT34zvgWcmzZRFKyyb_iw1Pf3A5A5hEz8SiicyHiCoOxx-ahjdL6_s4-DeXecnnuOSijJSrkQkGRuQD5PD_qb4A" alt="upmath">
 		</div>
 	</div>
