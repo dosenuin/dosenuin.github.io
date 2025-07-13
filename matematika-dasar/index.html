@@ -352,6 +352,11 @@ body {
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+.jawaban::before {
+  content: "Jawaban " counter(bab) "." counter(subbab) "." counter(teorema);
+  background-color: #3498db;
+  color: white;
+}
 .gambar-container {
   position: relative;
   margin: 2.5rem auto; /* Pusatkan container */
@@ -470,13 +475,13 @@ body {
 		<p class="h5"> SDG 2: Zero Hunger</p>
 		<p> Misalnya, dalam konteks pertanian, hasil panen per hektar bisa berhubungan dengan faktor-faktor seperti teknologi pertanian, cuaca, dan praktik pertanian. Dalam jangka pendek, produksi bisa meningkat dengan sangat cepat, tetapi pada akhirnya, pertumbuhan panen akan mencapai batas optimalnya (maksimum) dan melambat. Fungsi panen dinyatakan sebagai $$ P(t) = -3t^2 + 24t $$ dengan $P$ menyatakan hasil panen dalam ton per hektar dan $t$ menyatakan waktu dalam tahun.</p>
 		<p> Berapakah pertumbuhan panen pada tahun ketiga? </p>
-	</div>
-	<div class="pembahasan">
-		<p> Pertumbunan panen merupakan turunan pertama dari fungsi panen. Jika diperhatikan kurva fungsi seperti di bawah ini jelas gradien yang akan didapatkan bernilai positif.<a class="referensi" href="#"></a></p>
-		<div class="gambar-container">
-			<img src="//i.upmath.me/svgb/TZDNTsQgEMfvPAWHPayWGtvuauKKL9JiQsvIkmVp01KlEt5dEI3OZWb-ML_56HqQynirLp-TGuw6Q2i3ZeAaaMUQ6vIzd2oJLUoOa2VgoVclhAaCUoY_lLBnWt1VkyUIR3Oa96Cp37ldyMr2q2xJYajjQkx6tG2vVyDP5QsR45UrQ8vj0yPDe9-5QHzZ3HbutS7qQ_ThxowCYgEfLoT34zvgWcmzZRFKyyb_iw1Pf3A5A5hEz8SiicyHiCoOxx-ahjdL6_s4-DeXecnnuOSijJSrkQkGRuQD5PD_qb4A" alt="upmath">
+		<div class="jawaban">
+			<p> Pertumbunan panen merupakan turunan pertama dari fungsi panen. Jika diperhatikan kurva fungsi seperti di bawah ini jelas gradien yang akan didapatkan bernilai positif.<a class="referensi" href="#"></a></p>
+			<div class="gambar-container">
+				<img src="//i.upmath.me/svgb/TZDNTsQgEMfvPAWHPayWGtvuauKKL9JiQsvIkmVp01KlEt5dEI3OZWb-ML_56HqQynirLp-TGuw6Q2i3ZeAaaMUQ6vIzd2oJLUoOa2VgoVclhAaCUoY_lLBnWt1VkyUIR3Oa96Cp37ldyMr2q2xJYajjQkx6tG2vVyDP5QsR45UrQ8vj0yPDe9-5QHzZ3HbutS7qQ_ThxowCYgEfLoT34zvgWcmzZRFKyyb_iw1Pf3A5A5hEz8SiicyHiCoOxx-ahjdL6_s4-DeXecnnuOSijJSrkQkGRuQD5PD_qb4A" alt="upmath">
+			</div>
+			<p> Sekarang mari hitung menggunakan limit: $$ \begin{align*} m_{\text{tan}} &= \lim_{h\to 0} \dfrac{f(3+h)-f(3)}{h} \\ &= \lim_{h\to 0} \dfrac{-3(3+h)^2+24(3+h)-(-3(3)^2+24(3))}{h} \\ &= \lim_{h\to 0} \dfrac{-3(9+6h+h^2)+24(3+h)-(-3(9)+24(3))}{h} \\ &= \lim_{h\to 0} \dfrac{-3(6h+h^2)+24h}{h} \\ &= \lim_{h\to 0} -3(6+h)+24 \\ &= 6. \end{align*}$$ Jadi pertumbuhan panen pada tahun ketiga adalah $6$ (ton per hektar per tahun).</p>
 		</div>
-		<p> Sekarang mari hitung menggunakan limit: $$ \begin{align*} m_{\text{tan}} &= \lim_{h\to 0} \dfrac{f(3+h)-f(3)}{h} \\ &= \lim_{h\to 0} \dfrac{-3(3+h)^2+24(3+h)-(-3(3)^2+24(3))}{h} \\ &= \lim_{h\to 0} \dfrac{-3(9+6h+h^2)+24(3+h)-(-3(9)+24(3))}{h} \\ &= \lim_{h\to 0} \dfrac{-3(6h+h^2)+24h}{h} \\ &= \lim_{h\to 0} -3(6+h)+24 \\ &= 6. \end{align*}$$ Jadi pertumbuhan panen pada tahun ketiga adalah $6$ (ton per hektar per tahun).</p>
 	</div>
 	
 	<p class="h4">Definisi</p>
@@ -485,7 +490,7 @@ body {
 	</p>
 	<div class="definisi">
 		<p>
-			Turunan dari $f(x)$ yaitu $f'(x)$ didefinisikan melalui pendekatan limit di sebarang bilangan $x$ yaitu 			$$f'(x) = \lim_{h\to 0} \dfrac{f(x+h) - f(x)}{h}$$
+			Turunan dari $f(x)$ yaitu $f'(x)$ didefinisikan melalui  limit di sebarang bilangan $x$ yaitu 			$$f'(x) = \lim_{h\to 0} \dfrac{f(x+h) - f(x)}{h}$$
 		</p>
 	</div>
 	<p> Jika limit di atas ada, maka fungsi $f$ disebut terdiferensialkan di $x.$</p>
@@ -502,7 +507,7 @@ body {
 			Turunan fungsi jumlah air bersih $$\begin{align*} W'(t) &= \lim_{h\to 0}\dfrac{W(t+h)-W(t)}{h} \\ &= \lim_{h\to 0}\dfrac{\frac{1}{t+h}-\frac{1}{t}}{h} \\ &= \lim_{h\to 0}\dfrac{\frac{t-(t+h)}{t(t+h)}}{h} \\ &= \lim_{h\to 0}\dfrac{\frac{-h}{t(t+h)}}{h} \\ &= \lim_{h\to 0}\dfrac{-1}{t(t+h)} \\ &=\dfrac{-1}{t^2}\end{align*}$$
 		</p>
 		<p>
-			Nilai negatif menunjukkan bahwa kecepatan pengisian air berkurang seiring waktu, misalnya karena tekanan berkurang atau debit awal tinggi lalu menurun. Contoh: $W'(1)=−1.$ Laju pengisian air saat jam ke-1 adalah −1000 liter/jam. Ini relevan untuk mengevaluasi efisiensi distribusi air bersih, seperti berapa cepat tangki kosong atau berapa liter air yang diterima warga dalam waktu tertentu.
+			Nilai negatif menunjukkan bahwa kecepatan pengisian air berkurang seiring waktu, misalnya karena tekanan berkurang atau debit awal tinggi lalu menurun. Contoh: $W'(1)=−1.$ Laju pengisian air saat jam ke-1 adalah −1000 liter/jam. 
 		</p>
 	</div>
 	<p class="h4">Aturan Turunan</p>
