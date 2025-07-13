@@ -360,81 +360,91 @@ body {
   font-size: 0.85rem;
   font-weight: bold;
 }
-.gambar-container {
-  position: relative;
-  margin: 2.5rem auto; /* Pusatkan container */
-  counter-increment: gambar-counter;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Pusatkan horizontal */
-  max-width: fit-content;
-}
+  .gambar-container {
+    position: relative;
+    margin: 2.5rem auto;
+    counter-increment: gambar-counter;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: fit-content;
+  }
 
-.gambar-container::after {
-  content: "Gambar " counter(gambar-counter);
-  display: inline-block;
-  margin-top: 0.75rem;
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: white;
-  padding: 0.1rem 1rem;
-  background-color: #3b82f6;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  width: auto;
-}
+  .gambar-container::after {
+    content: "Gambar " counter(gambar-counter);
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+    padding: 0.1rem 1rem;
+    background-color: #3b82f6;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: auto;
+  }
 
-.gambar-container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
-  display: block;
-	padding: 0.5rem;
-	background: white;
-	cursor: zoom-in;
-	transition: transform 0.3s ease;
-}
-.gambar-container img.zoomed {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) scale(1.5);
-	z-index: 1000;
-	max-width: 90vw;
-	max-height: 90vh;
-	cursor: zoom-out;
-	box-shadow: 0 0 0 100vmax rgba(0,0,0,0.8);
-	padding: 1rem;
-}
-.gambar-container .zoom-btn {
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
-	background: rgba(255,255,255,0.8);
-	border: none;
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-	font-weight: bold;
-	z-index: 10;
-}
+  .gambar-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    display: block;
+    padding: 0.5rem;
+    background: white;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+  }
 
-body {
-  counter-reset: gambar-counter;
-}
+  .gambar-container img.zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    z-index: 1000;
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: zoom-out;
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.8);
+    padding: 1rem;
+  }
 
-/* Untuk mengatur counter global */
-body {
-  counter-reset: gambar-counter;
-}
+  .gambar-container .zoom-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255,255,255,0.8);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-weight: bold;
+    z-index: 10;
+  }
+
+  body {
+    counter-reset: gambar-counter;
+    overflow-x: hidden;
+  }
+
+  /* Tambahan untuk overlay */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 999;
+  }
 
 @media (max-width: 768px) {
   .h1 {
