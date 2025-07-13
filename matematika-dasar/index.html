@@ -360,13 +360,17 @@ body {
 
 .gambar-container::after {
   content: "Gambar " counter(gambar-counter);
-  display: block;
+  display: inline-block;
   text-align: center;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
   font-weight: bold;
-  color: #1e293b;
-  padding: 0.25rem 0;
+  color: white;
+  padding: 0.35rem 1.25rem;
+  background-color: #3b82f6;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  position: relative;
 }
 
 .gambar-container img {
@@ -375,8 +379,8 @@ body {
   height: auto;
   margin: 0 auto;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  border-left: 4px solid #3b82f6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+	padding: 1rem;
 }
 
 /* Untuk mengatur counter global */
