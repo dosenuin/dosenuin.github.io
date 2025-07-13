@@ -393,7 +393,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 1px solid #e2e8f0;
   display: block;
-	padding: 1rem;
+	padding: 0.5rem;
 }
 
 body {
@@ -494,7 +494,7 @@ body {
 	</p>
 	<div class="definisi">
 		<p>
-			Turunan dari $f(x)$ yaitu $f'(x)$ didefinisikan melalui  limit di sebarang bilangan $x$ yaitu 			$$f'(x) = \lim_{h\to 0} \dfrac{f(x+h) - f(x)}{h}$$
+			Turunan dari $f(x)$ yaitu $f'(x)$ didefinisikan melalui  limit di sebarang bilangan $x$ yaitu 			$$f'(x) = \lim_{h\to 0} \dfrac{f(x+h) - f(x)}{h}.$$
 		</p>
 	</div>
 	<p> Jika limit di atas ada, maka fungsi $f$ disebut terdiferensialkan di $x.$</p>
@@ -514,6 +514,10 @@ body {
 			Nilai negatif menunjukkan bahwa kecepatan pengisian air berkurang seiring waktu, misalnya karena tekanan berkurang atau debit awal tinggi lalu menurun. Contoh: $W'(1)=−1.$ Laju pengisian air saat jam ke-1 adalah −1000 liter/jam. 
 		</p>
 	</div>
+	<div class="definisi">
+		Saat dihitung turunan $f$ pada satu titik $(c,f(c))$ akan dipunyai beberapa perhitungan yang ekuivalen: $$ \begin{align*}  f'(c) &= \lim_{h\to 0} \dfrac{f(c+h)-f(c)}{h} \\ &= \lim_{l\to 0} \dfrac{f(c+l)-f(c)}{l} \\ &= \lim_{x\to c} \dfrac{f(x)-f(c)}{x-c} \end{align*} $$
+	</div>
+	
 	<p class="h4">Aturan Turunan</p>
 	<p>
 		<b>Tujuan:</b> Mengajarkan turunan fungsi dasar dan gabungan.
@@ -540,13 +544,13 @@ body {
 		</p>
 	</div>
 	<div class="aturan">
-		<p class="h5">Turunan Eksponensial</p>
+		<p class="h5"> Turunan Eksponensial</p>
 		<p>
 			$$\begin{align*} y &=e^{kx} \\ y' &= \dfrac{d(e^{kx})}{dx} = ke^{kx}.\end{align*}$$
 		</p>
 	</div>
 	<div class="aturan">
-		<p class="h5">Turunan Logaritma</p>
+		<p class="h5"> Turunan Logaritma</p>
 		<p>
 			$$\begin{align*} y &=\log_{a}x \\ y' &= \dfrac{d(\log_{a}x)}{dx} = \dfrac{1}{x\ln a}.\end{align*}$$
 		</p>
@@ -580,7 +584,7 @@ body {
 		</p>
 	</div>
 	<div class="contoh">
-		<p class="h5">Contoh SDGs (SDG 3 - Good Health):</p>
+		<p class="h5"> SDG 3 - Good Health</p>
 		<p>
 			 Fungsi penyebaran penyakit: $I(t) = \sqrt{1+2e^{-t}}.$ Berapa cepat perubahan penyebaran penyakit setelah intervensi?
 		</p>
@@ -603,7 +607,7 @@ body {
 			</ol>
 		</div>
 		<div class="contoh">
-			<p class="h5">Contoh SDGs (SDG 8 - Economic Growth):</p>
+			<p class="h5">SDG 8 - Economic Growth</p>
 			<p>
 				Jika $GDP(t) = t^3 - 3t^2 +2,$ maka:
 			</p>
