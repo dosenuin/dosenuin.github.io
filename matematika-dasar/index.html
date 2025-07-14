@@ -271,6 +271,28 @@ body {
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+.tantangan {
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.0);
+  position: relative;
+	padding: 1rem 1.5rem 0 1.5rem;
+  border-radius: 8px;
+  color: #1e293b;
+  border: 2px solid #3b82f6; 
+}
+.tantangan::before {
+  content: "Tantangan " counter(bab) "." counter(subbab) "." counter(teorema);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 .sdg::before {
 	content: "SDG " counter(sdg);
 	position: absolute;
@@ -388,7 +410,6 @@ body {
     height: auto;
     border-radius: 8px;
 		box-shadow: 0 4px 12px rgba(59, 130, 246, 0.91);
-    border: 1px solid #3b82f6;
     display: block;
     padding: 0.5rem;
     background: white;
