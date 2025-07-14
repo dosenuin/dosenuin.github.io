@@ -464,6 +464,24 @@ body {
     background: rgba(0,0,0,0.8);
     z-index: 999;
   }
+	
+.teorema-tabs {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  background: #e9ecef;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.tab-btn.active {
+  background: #6c757d;
+  color: white;
+}
 
 @media (max-width: 768px) {
   .h1 {
@@ -616,6 +634,10 @@ body {
 			$$\begin{align*} (k)' = \dfrac{d(k)}{dx} = 0.\end{align*}$$
 		</p>
 	</div>
+	<div class="teorema-tabs">
+		<button class="tab-btn active" onclick="openTab('teorema')">Teorema</button>
+		<button class="tab-btn" onclick="openTab('bukti')">Bukti</button>
+	</div>
 	<div class="bukti">
 		<p> $$ \begin{align*} f'(x) = \lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h} = \lim_{h\to 0} \dfrac{x+h-x}{h} = \lim_{h\to 0} \dfrac{h}{h} = 1. \hspace{1cm}\boxed{\text{TERBUKTI}}\end{align*} $$</p>
 	</div>
@@ -680,6 +702,7 @@ body {
 			$$\begin{align*}  \left( \dfrac{f}{g}\right)'=\dfrac{f'\cdot g - f\cdot g'}{g^2}\end{align*} $$
 		</p>
 	</div>
+
 	<div class="bukti">
 		<p> Misalkan $F(x)=\dfrac{f(x)}{g(x)}.$ Perhatikan bahwa $$ \begin{align*} F'(x) &= \lim_{h\to 0}\dfrac{F(x+h)-F(x)}{h} \\ &= \lim_{h\to 0}\dfrac{\dfrac{f(x+h)}{g(x+h)}-\dfrac{f(x)}{g(x)}}{h} \\ &= \lim_{h\to 0}\dfrac{g(x)f(x+h)-f(x)g(x+h)}{h}\cdot \dfrac{1}{g(x)g(x+h)} \\ &= \lim_{h\to 0}\left( \dfrac{g(x)f(x+h)-g(x)f(x)+g(x)f(x)-f(x)g(x+h)}{h} \right)\dfrac{1}{g(x)g(x+h)} \\ &= \lim_{h\to 0} \left( g(x)\dfrac{f(x+h)-f(x)}{h}-f(x)\dfrac{g(x+h)-g(x)}{h} \right)\dfrac{1}{g(x)g(x+h)} \\ &= \left(g(x)f'(x)-f(x)g'(x) \right)\dfrac{1}{g(x)g(x)} \\ &= \dfrac{f'(x)g(x)-f(x)g'(x)}{g^2(x)}\hspace{1cm}\boxed{\text{TERBUKTI}} \end{align*} $$</p>
 	</div>
@@ -895,35 +918,53 @@ body {
 			<div class="text-center">
 			<a href="https://info.flagcounter.com/ude3"><img src="https://s01.flagcounter.com/count/ude3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 			</div>
-			<script>
-				// MODE KOREKSI
-				document.addEventListener('DOMContentLoaded', function() {
-						let hiddenTime;
-						let timeoutId;
-						const refreshAfter = 1*60*1000; // 1 menit dalam milidetik (60 * 1000)
-						function handleVisibilityChange() {
-								if (document.hidden) {
-										// Tab menjadi tidak terlihat, catat waktu
-										hiddenTime = Date.now();
-										// Set timeout untuk refresh
-										timeoutId = setTimeout(() => {
-												window.location.reload();
-										}, refreshAfter);
-								} else {
-										// Tab kembali terlihat, clear timeout jika ada
-										if (timeoutId) {
-												clearTimeout(timeoutId);
-										}
-								}
-						}
-						// Tambahkan event listener untuk visibility change
-						document.addEventListener('visibilitychange', handleVisibilityChange);
-						// Juga handle kasus ketika halaman sudah dalam keadaan hidden saat load
-						if (document.hidden) {
-								handleVisibilityChange();
-						}
-				});
-			</script>
+<script>
+	// MODE KOREKSI
+	document.addEventListener('DOMContentLoaded', function() {
+			let hiddenTime;
+			let timeoutId;
+			const refreshAfter = 1*60*1000; // 1 menit dalam milidetik (60 * 1000)
+			function handleVisibilityChange() {
+					if (document.hidden) {
+							// Tab menjadi tidak terlihat, catat waktu
+							hiddenTime = Date.now();
+							// Set timeout untuk refresh
+							timeoutId = setTimeout(() => {
+									window.location.reload();
+							}, refreshAfter);
+					} else {
+							// Tab kembali terlihat, clear timeout jika ada
+							if (timeoutId) {
+									clearTimeout(timeoutId);
+							}
+					}
+			}
+			// Tambahkan event listener untuk visibility change
+			document.addEventListener('visibilitychange', handleVisibilityChange);
+			// Juga handle kasus ketika halaman sudah dalam keadaan hidden saat load
+			if (document.hidden) {
+					handleVisibilityChange();
+			}
+	});
+				
+function openTab(tabName) {
+  const bukti = document.querySelector('.bukti');
+  const teorema = document.querySelector('.teorema');
+  const btns = document.querySelectorAll('.tab-btn');
+  
+  if (tabName === 'bukti') {
+    bukti.style.display = 'block';
+    teorema.style.display = 'none';
+    btns[0].classList.remove('active');
+    btns[1].classList.add('active');
+  } else {
+    bukti.style.display = 'none';
+    teorema.style.display = 'block';
+    btns[0].classList.add('active');
+    btns[1].classList.remove('active');
+  }
+}
+</script>
 			</body>
 			</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
