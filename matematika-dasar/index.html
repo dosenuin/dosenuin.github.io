@@ -28,11 +28,9 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Cari semua elemen teorema
   const teoremaElements = document.querySelectorAll('.teorema');
   
   teoremaElements.forEach((teorema, index) => {
-    // Buat div tabs
     const tabsDiv = document.createElement('div');
     tabsDiv.className = 'teorema-tabs';
     tabsDiv.innerHTML = `
@@ -40,32 +38,40 @@ document.addEventListener('DOMContentLoaded', function() {
       <button class="tab-btn">Bukti</button>
     `;
     
-    // Sisipkan sebelum teorema
     teorema.parentNode.insertBefore(tabsDiv, teorema);
     
-    // Temukan elemen bukti yang sesuai (asumsi struktur: .teorema diikuti .bukti)
     const bukti = teorema.nextElementSibling?.classList.contains('bukti') 
       ? teorema.nextElementSibling 
       : null;
     
-    // Tambahkan event listener
     const buttons = tabsDiv.querySelectorAll('.tab-btn');
     buttons[0].addEventListener('click', () => {
       teorema.style.display = 'block';
-      if (bukti) bukti.style.display = 'none';
+      if (bukti) {
+        bukti.style.visibility = 'hidden';
+        bukti.style.height = '0';
+        bukti.style.overflow = 'hidden';
+      }
       buttons[0].classList.add('active');
       buttons[1].classList.remove('active');
     });
     
     buttons[1].addEventListener('click', () => {
       teorema.style.display = 'none';
-      if (bukti) bukti.style.display = 'block';
+      if (bukti) {
+        bukti.style.visibility = 'visible';
+        bukti.style.height = 'auto';
+      }
       buttons[0].classList.remove('active');
       buttons[1].classList.add('active');
     });
     
-    // Sembunyikan bukti secara default
-    if (bukti) bukti.style.display = 'none';
+    // Sembunyikan bukti secara default dengan cara yang mempertahankan pseudo-element
+    if (bukti) {
+      bukti.style.visibility = 'hidden';
+      bukti.style.height = '0';
+      bukti.style.overflow = 'hidden';
+    }
   });
 });
 </script>
