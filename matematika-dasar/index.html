@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     
     // Sisipkan sebelum teorema
-    teorema.parentNode.insertAfter(tabsDiv, teorema);
+    teorema.parentNode.insertBefore(tabsDiv, teorema);
     
     // Temukan elemen bukti yang sesuai (asumsi struktur: .teorema diikuti .bukti)
     const bukti = teorema.nextElementSibling?.classList.contains('bukti') 
@@ -69,6 +69,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+<style>
+.teorema-tabs {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  background: #e9ecef;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: all 0.3s;
+}
+
+.tab-btn.active {
+  background: #6c757d;
+  color: white;
+}
+
+.tab-btn:not(.active):hover {
+  background: #d6d8db;
+}
+</style>
 
 <style>
 .teorema-tabs {
