@@ -95,47 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style>
 
-<style>
-.teorema-tabs {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.tab-btn {
-  padding: 8px 16px;
-  background: #e9ecef;
-  border: none;
-  cursor: pointer;
-  margin-right: 5px;
-  transition: all 0.3s;
-}
-
-.tab-btn.active {
-  background: #6c757d;
-  color: white;
-}
-
-.tab-btn:not(.active):hover {
-  background: #d6d8db;
-}
-</style>
-
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
 
-mjx-container {
-  overflow-x: auto;
-  overflow-y: hidden;
-	padding: 1px;
-}
-mjx-table {
-    display: inline-block;
-    border: 1px solid #0563BB; /* Warna batas sesuai tema */
-    background-color: #f9f9f9; /* Warna latar belakang lembut */
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 4px; /* Sudut membulat untuk estetika */
-}
 			.square-button {
 				font-family: 'Roboto', 'Segoe UI', sans-serif;
 				width: 120px;
@@ -566,7 +528,22 @@ body {
   mjx-table,
 	mjx-math	{
     font-size: 80%; /* Atur sesuai kebutuhan */
+		margin: 0rem 0rem;
   }
+	
+mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+	padding: 1px;
+}
+mjx-table {
+    display: inline-block;
+    border: 1px solid #0563BB; /* Warna batas sesuai tema */
+    <!-- background-color: #f9f9f9; /* Warna latar belakang lembut */ -->
+    padding: 10px;
+    <!-- margin: 5px 0; -->
+    border-radius: 4px; /* Sudut membulat untuk estetika */
+}
 
 @media (max-width: 768px) {
   .h1 {
