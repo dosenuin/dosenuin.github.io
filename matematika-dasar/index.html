@@ -792,11 +792,14 @@ body {
 	<p>
 		<b>Tujuan:</b> Menyelesaikan turunan komposisi fungsi.
 	</p>
-	<div class="aturan">
+	<div class="teorema">
 		<p class="h5">Aturan Rantai</p>
 		<p>
 			$$ \begin{align*} \dfrac{dy}{dx} &=\dfrac{dy}{du}\cdot \dfrac{du}{dx} \\ \dfrac{d}{dx}f(g(x)) &= f'(g(x))\cdot g'(x).\end{align*}$$
 		</p>
+	</div>
+	<div class="bukti">
+		<p> Misalkan $y=f(u)$ dan $u=g(x)$ dengan $g(x)$ terdiferensialkan di $x$ dan $f(u)$ terdiferensialkan di $u.$ Maka diperoleh $$ \begin{align*} \dfrac{dy}{dx} &= \lim_{\Delta x\to 0} \dfrac{\Delta y}{\Delta x} = \lim_{\Delta x\to 0}\dfrac{\Delta y}{\Delta u}\dfrac{\Delta u}{\Delta x} \\ &= \lim_{\Delta x\to 0}\dfrac{\Delta y}{\Delta x}\cdot \lim_{\Delta x\to 0}\dfrac{\Delta u}{\Delta x}. \end{align*} $$ Karena $g$ terdiferensialkan di $x,$ maka $g$ kontinu di $x.$ Sehingga kita bisa simpulkan saat $\Delta x\to 0$ maka $\Delta u\to 0.$ Oleh karena itu $$\begin{align*} \dfrac{dy}{dx} = \lim_{\Delta u\to 0}\dfrac{\Delta y}{\Delta x}\cdot \lim_{\Delta x\to 0}\dfrac{\Delta u}{\Delta x} = \dfrac{dy}{du}\cdot \dfrac{du}{dx}. \hspace{1cm}\boxed{\text{TERBUKTI}}\end{align*}  $$</p>
 	</div>
 	<div class="contoh">
 		<p class="h5"> SDG 3 - Good Health</p>
