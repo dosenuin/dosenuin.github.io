@@ -28,6 +28,74 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Buat tombol untuk setiap jawaban
+  const jawabanElements = document.querySelectorAll('.jawaban');
+  
+  jawabanElements.forEach((jawaban) => {
+    // Buat tombol
+    const toggleBtn = document.createElement('button');
+    toggleBtn.textContent = 'Jawaban';
+    toggleBtn.setAttribute('data-toggle', 'tooltip');
+    toggleBtn.setAttribute('data-placement', 'right');
+    toggleBtn.setAttribute('title', 'Jangan klik. Coba dulu.');
+    toggleBtn.className = 'btn-jawaban';
+    
+    // Sisipkan sebelum elemen jawaban
+    jawaban.parentNode.insertBefore(toggleBtn, jawaban);
+    
+    // Sembunyikan jawaban awal
+    jawaban.style.display = 'none';
+    
+    // Tambahkan event listener
+    toggleBtn.addEventListener('click', function() {
+      if (jawaban.style.display === 'none') {
+        jawaban.style.display = 'block';
+        this.textContent = 'Sembunyikan Jawaban';
+        this.setAttribute('title', '');
+      } else {
+        jawaban.style.display = 'none';
+        this.textContent = 'Jawaban';
+        this.setAttribute('title', 'Jangan klik. Coba dulu.');
+      }
+    });
+  });
+
+  // Inisialisasi tooltip Bootstrap (jika menggunakan Bootstrap)
+  if (typeof bootstrap !== 'undefined') {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  }
+});
+</script>
+
+<style>
+.btn-jawaban {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.btn-jawaban:hover {
+  background-color: #e9ecef;
+}
+
+.jawaban {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-left: 3px solid #6c757d;
+  margin-bottom: 20px;
+  display: none;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
   // Cari semua elemen teorema
   const teoremaElements = document.querySelectorAll('.teorema');
   
@@ -798,16 +866,18 @@ mjx-table {
 		<div class="contoh">
 			<p class="h5">SDG 8 - Economic Growth</p>
 			<p>
-				Jika pada beberapa tahun $t$ tertentu mengalami pertumbuhan (naik) setelah itu pertumbuhan melambat dan akhirnya turun seperti permodelan berikut $GDP(t) = t^3 - 3t^2 +2,$ 
+				Jika pada beberapa tahun $t$ tertentu mengalami pertumbuhan (naik) setelah itu pertumbuhan melambat dan akhirnya turun seperti permodelan berikut $GDP(t) = t^3 - 3t^2 +2,$ maka tentukan pertumbuhan ekonomi dan percepatannya.
 				<div class="gambar-container">
 					<img src="//i.upmath.me/svgb/TU9ND4IwDL3vV-zAwY9hAnhS5x8BTDZWdWFsRIYOyf67AzSxh7729bV5LTjcpB6trN-trGz_AJ8PXcUU0KREqFjGzMnO52gCrKSGjjZSCAUETR1-SWHvNNklrSUIh3CKcVB0jFzkF2b4McPElKhgQrTK2JyrHsgpPhNhGiY1jbPDvsSrsXCehHTJ4mwTIN2mfq2NgLDAqpowbp6AFVxtGW7SWTerIn8MtkGLxfS3_v_vAw" alt="upmath">
 				</div>
-				maka:
 			</p>
-			<ol>
-				<li>$GDP'(t) = 3t^2 -6t$ adalah pertumbuhan ekonomi</li>
-				<li>$GDP''(t) = 6t-6$ adalah percepatan atau perlambatan pertumbuhan</li>
-			</ol>
+			<button data-toggle="tooltip" data-placement="right" title="Jangan klik. Coba dulu.">Jawaban</button>
+			<div class="jawaban">
+				<ol>
+					<li>$GDP'(t) = 3t^2 -6t$ adalah pertumbuhan ekonomi</li>
+					<li>$GDP''(t) = 6t-6$ adalah percepatan atau perlambatan pertumbuhan</li>
+				</ol>
+			</div>
 		</div>
 		
 		<p class="h4">Turunan Implisit</p>
