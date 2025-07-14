@@ -71,27 +71,28 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <style>
-.btn-jawaban {
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s;
-}
 
-.btn-jawaban:hover {
-  background-color: #e9ecef;
-}
+<!-- .jawaban { -->
+  <!-- padding: 15px; -->
+  <!-- background-color: #f8f9fa; -->
+  <!-- border-left: 3px solid #6c757d; -->
+  <!-- margin-bottom: 20px; -->
+  <!-- display: none; -->
+<!-- } -->
 
-.jawaban {
-  padding: 15px;
-  background-color: #f8f9fa;
-  border-left: 3px solid #6c757d;
-  margin-bottom: 20px;
-  display: none;
-}
+<!-- .btn-jawaban { -->
+  <!-- background-color: #f8f9fa; -->
+  <!-- border: 1px solid #dee2e6; -->
+  <!-- padding: 5px 10px; -->
+  <!-- margin-bottom: 10px; -->
+  <!-- cursor: pointer; -->
+  <!-- border-radius: 4px; -->
+  <!-- transition: all 0.3s; -->
+<!-- } -->
+
+<!-- .btn-jawaban:hover { -->
+  <!-- background: #d6d8db; -->
+<!-- } -->
 </style>
 
 <script>
@@ -140,12 +141,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <style>
+
 .teorema-tabs {
   display: flex;
   margin-bottom: 10px;
 }
 
-.tab-btn {
+.tab-btn,
+.btn-jawaban {
   padding: 8px 16px;
   background: #e9ecef;
   border: none;
@@ -159,7 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
   color: white;
 }
 
-.tab-btn:not(.active):hover {
+.tab-btn:not(.active):hover, 
+.btn-jawaban:hover {
   background: #d6d8db;
 }
 </style>
