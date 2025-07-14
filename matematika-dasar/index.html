@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     
     // Sisipkan sebelum teorema
-    teorema.parentNode.insertBefore(tabsDiv, teorema);
+    teorema.parentNode.insertAfter(tabsDiv, teorema);
     
     // Temukan elemen bukti yang sesuai (asumsi struktur: .teorema diikuti .bukti)
     const bukti = teorema.nextElementSibling?.classList.contains('bukti') 
