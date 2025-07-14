@@ -25,6 +25,76 @@
 				}
 		};
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Cari semua elemen teorema
+  const teoremaElements = document.querySelectorAll('.teorema');
+  
+  teoremaElements.forEach((teorema, index) => {
+    // Buat div tabs
+    const tabsDiv = document.createElement('div');
+    tabsDiv.className = 'teorema-tabs';
+    tabsDiv.innerHTML = `
+      <button class="tab-btn active">Teorema</button>
+      <button class="tab-btn">Bukti</button>
+    `;
+    
+    // Sisipkan sebelum teorema
+    teorema.parentNode.insertBefore(tabsDiv, teorema);
+    
+    // Temukan elemen bukti yang sesuai (asumsi struktur: .teorema diikuti .bukti)
+    const bukti = teorema.nextElementSibling?.classList.contains('bukti') 
+      ? teorema.nextElementSibling 
+      : null;
+    
+    // Tambahkan event listener
+    const buttons = tabsDiv.querySelectorAll('.tab-btn');
+    buttons[0].addEventListener('click', () => {
+      teorema.style.display = 'block';
+      if (bukti) bukti.style.display = 'none';
+      buttons[0].classList.add('active');
+      buttons[1].classList.remove('active');
+    });
+    
+    buttons[1].addEventListener('click', () => {
+      teorema.style.display = 'none';
+      if (bukti) bukti.style.display = 'block';
+      buttons[0].classList.remove('active');
+      buttons[1].classList.add('active');
+    });
+    
+    // Sembunyikan bukti secara default
+    if (bukti) bukti.style.display = 'none';
+  });
+});
+</script>
+
+<style>
+.teorema-tabs {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  background: #e9ecef;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: all 0.3s;
+}
+
+.tab-btn.active {
+  background: #6c757d;
+  color: white;
+}
+
+.tab-btn:not(.active):hover {
+  background: #d6d8db;
+}
+</style>
+
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
 
@@ -464,24 +534,6 @@ body {
     background: rgba(0,0,0,0.8);
     z-index: 999;
   }
-	
-.teorema-tabs {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.tab-btn {
-  padding: 8px 16px;
-  background: #e9ecef;
-  border: none;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-.tab-btn.active {
-  background: #6c757d;
-  color: white;
-}
 
 @media (max-width: 768px) {
   .h1 {
@@ -947,23 +999,6 @@ body {
 			}
 	});
 				
-function openTab(tabName) {
-  const bukti = document.querySelector('.bukti');
-  const teorema = document.querySelector('.teorema');
-  const btns = document.querySelectorAll('.tab-btn');
-  
-  if (tabName === 'bukti') {
-    bukti.style.display = 'block';
-    teorema.style.display = 'none';
-    btns[0].classList.remove('active');
-    btns[1].classList.add('active');
-  } else {
-    bukti.style.display = 'none';
-    teorema.style.display = 'block';
-    btns[0].classList.add('active');
-    btns[1].classList.remove('active');
-  }
-}
 </script>
 			</body>
 			</html>
