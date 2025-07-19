@@ -1334,12 +1334,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const tocContainer = document.getElementById("toc");
   tocContainer.innerHTML = ""; // Bersihkan isi sebelumnya
 
-  const headings = document.querySelectorAll(".h1, .h2, .h3, .h4");
+  const headings = document.querySelectorAll("p.h1, p.h2, p.h3, p.h4");
   const seen = new Set();
 
   headings.forEach((heading, index) => {
+    // Skip heading yang mengandung class "sdg"
+    if (heading.classList.contains("sdg")) return;
+
     const text = heading.textContent.trim();
-    <!-- if (seen.has(text)) return; // Cegah duplikasi berdasarkan teks -->
+    <!-- if (seen.has(text)) return; -->
     <!-- seen.add(text); -->
 
     const level = heading.className;
@@ -1369,7 +1372,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }, { rootMargin: "0px 0px -70% 0px" });
 
-  headings.forEach(h => observer.observe(h));
+  headings.forEach(h => {
+    if (!h.classList.contains("sdg")) observer.observe(h);
+  });
 });
 </script>
 
