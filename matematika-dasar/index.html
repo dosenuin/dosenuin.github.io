@@ -32,23 +32,26 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const tocContainer = document.getElementById("toc");
+  // Bersihkan isi TOC sebelum ditambahkan ulang
+  tocContainer.innerHTML = "";
+	
   const headings = document.querySelectorAll("p.h1, p.h2, p.h3, p.h4");
 
   headings.forEach((heading, index) => {
-    const level = heading.className;
     const text = heading.textContent;
+
+    // Cegah pengulangan judul yang sama
+    if (seen.has(text)) return;
+    seen.add(text);
+
+    const level = heading.className;
     const id = `heading-${index}`;
     heading.setAttribute("id", id);
 
     const link = document.createElement("a");
     link.href = `#${id}`;
+    link.textContent = text;
     link.className = `d-block ms-${level.slice(1)}`;
-
-    const icon = document.createElement("i");
-    icon.className = "fa-solid fa-circle-dot"; // pilih ikon sesuai selera
-    link.appendChild(icon);
-    link.appendChild(document.createTextNode(text));
-
     tocContainer.appendChild(link);
   });
 
