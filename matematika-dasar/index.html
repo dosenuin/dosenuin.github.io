@@ -37,6 +37,11 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 1050;
+			padding: 8px 16px;
+			background: #e9ecef;
+			border: none;
+			cursor: pointer;
+			transition: all 0.3s;
     }
 
     /* Animasi masuk dan highlight TOC */
@@ -1329,13 +1334,13 @@ document.addEventListener("DOMContentLoaded", function() {
   const tocContainer = document.getElementById("toc");
   tocContainer.innerHTML = ""; // Bersihkan isi sebelumnya
 
-  const headings = document.querySelectorAll("p.h1, p.h2, p.h3, p.h4");
+  const headings = document.querySelectorAll(".h1, .h2, .h3, .h4");
   const seen = new Set();
 
   headings.forEach((heading, index) => {
     const text = heading.textContent.trim();
-    if (seen.has(text)) return; // Cegah duplikasi berdasarkan teks
-    seen.add(text);
+    <!-- if (seen.has(text)) return; // Cegah duplikasi berdasarkan teks -->
+    <!-- seen.add(text); -->
 
     const level = heading.className;
     const id = `heading-${index}`;
