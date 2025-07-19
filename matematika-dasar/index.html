@@ -26,6 +26,77 @@
 		};
 </script>
 
+<!-- Tambahan CSS untuk animasi dan highlight -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const tocContainer = document.getElementById("toc");
+  const headings = document.querySelectorAll("p.h1, p.h2, p.h3, p.h4");
+
+  headings.forEach((heading, index) => {
+    const level = heading.className;
+    const text = heading.textContent;
+    const id = `heading-${index}`;
+    heading.setAttribute("id", id);
+
+    const link = document.createElement("a");
+    link.href = `#${id}`;
+    link.className = `d-block ms-${level.slice(1)}`;
+
+    const icon = document.createElement("i");
+    icon.className = "fa-solid fa-circle-dot"; // pilih ikon sesuai selera
+    link.appendChild(icon);
+    link.appendChild(document.createTextNode(text));
+
+    tocContainer.appendChild(link);
+  });
+
+  // Highlight aktif saat scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute("id");
+      const link = tocContainer.querySelector(`a[href="#${id}"]`);
+      if (link) {
+        if (entry.isIntersecting) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      }
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+
+  headings.forEach(h => observer.observe(h));
+});
+</script>
+
+<style>
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+#toc a {
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  animation: fadeInSlide 0.5s ease forwards;
+  display: flex;
+  align-items: center;
+}
+
+#toc a.active {
+  background-color: #007bff;
+  color: white;
+}
+#toc a i {
+  margin-right: 8px;
+}
+</style>
+
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Buat tombol untuk setiap jawaban
@@ -1263,6 +1334,45 @@ mjx-table {
 	});
 				
 </script>
+
+<!-- Tombol untuk membuka offcanvas -->
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocCanvas">
+  Daftar Isi
+</button>
+
+<!-- Komponen Offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="tocCanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Daftar Isi</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div id="toc">
+      <!-- Daftar Isi akan dimuat di sini -->
+    </div>
+  </div>
+</div>
+
+<!-- Script untuk membangun daftar isi -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const tocContainer = document.getElementById("toc");
+  const headings = document.querySelectorAll("p.h1, p.h2, p.h3, p.h4");
+  headings.forEach((heading, index) => {
+    const level = heading.className;
+    const text = heading.textContent;
+    const id = `heading-${index}`;
+    heading.setAttribute("id", id);
+
+    const link = document.createElement("a");
+    link.href = `#${id}`;
+    link.textContent = text;
+    link.className = `d-block ms-${level.slice(1)}`;
+    tocContainer.appendChild(link);
+  });
+});
+</script>
+
 			</body>
 			</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
