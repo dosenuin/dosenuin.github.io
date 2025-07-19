@@ -26,86 +26,45 @@
 		};
 </script>
 
-<!-- Tambahan CSS untuk animasi dan highlight -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Font Awesome untuk ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const tocContainer = document.getElementById("toc");
-  // Bersihkan isi TOC sebelum ditambahkan ulang
-  tocContainer.innerHTML = "";
-	
-  const headings = document.querySelectorAll("p.h1, p.h2, p.h3, p.h4");
+  <style>
+    /* Tombol fixed kanan tengah */
+    .fixed-toc-button {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1050;
+    }
 
-  headings.forEach((heading, index) => {
-    const text = heading.textContent;
+    /* Animasi masuk dan highlight TOC */
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
 
-    // Cegah pengulangan judul yang sama
-    if (seen.has(text)) return;
-    seen.add(text);
+    #toc a {
+      text-decoration: none;
+      padding: 6px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      animation: fadeInSlide 0.5s ease forwards;
+      display: flex;
+      align-items: center;
+      color: #333;
+    }
 
-    const level = heading.className;
-    const id = `heading-${index}`;
-    heading.setAttribute("id", id);
+    #toc a.active {
+      background-color: #007bff;
+      color: white;
+    }
 
-    const link = document.createElement("a");
-    link.href = `#${id}`;
-    link.textContent = text;
-    link.className = `d-block ms-${level.slice(1)}`;
-    tocContainer.appendChild(link);
-  });
-
-  // Highlight aktif saat scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      const id = entry.target.getAttribute("id");
-      const link = tocContainer.querySelector(`a[href="#${id}"]`);
-      if (link) {
-        if (entry.isIntersecting) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
-        }
-      }
-    });
-  }, { rootMargin: "0px 0px -70% 0px" });
-
-  headings.forEach(h => observer.observe(h));
-});
-</script>
-
-<style>
-.fixed-toc-button {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1050; /* pastikan tombol tampil di atas elemen lain */
-}
-
-@keyframes fadeInSlide {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-#toc a {
-  text-decoration: none;
-  padding: 6px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  animation: fadeInSlide 0.5s ease forwards;
-  display: flex;
-  align-items: center;
-}
-
-#toc a.active {
-  background-color: #007bff;
-  color: white;
-}
-#toc a i {
-  margin-right: 8px;
-}
-</style>
+    #toc a i {
+      margin-right: 8px;
+    }
+  </style>
 
 
 <script>
@@ -1348,7 +1307,7 @@ mjx-table {
 
 <!-- Tombol untuk membuka offcanvas -->
 <button class="btn btn-primary fixed-toc-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocCanvas">
-  Daftar Isi
+  <i class="fa-solid fa-bars"></i> Daftar Isi
 </button>
 
 <!-- Komponen Offcanvas -->
@@ -1359,28 +1318,53 @@ mjx-table {
   </div>
   <div class="offcanvas-body">
     <div id="toc">
-      <!-- Daftar Isi akan dimuat di sini -->
+      <!-- Daftar Isi akan diisi lewat JavaScript -->
     </div>
   </div>
 </div>
 
-<!-- Script untuk membangun daftar isi -->
+<!-- Script untuk membangun TOC dan highlight -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const tocContainer = document.getElementById("toc");
+  tocContainer.innerHTML = ""; // Bersihkan isi sebelumnya
+
   const headings = document.querySelectorAll("p.h1, p.h2, p.h3, p.h4");
+  const seen = new Set();
+
   headings.forEach((heading, index) => {
+    const text = heading.textContent.trim();
+    if (seen.has(text)) return; // Cegah duplikasi berdasarkan teks
+    seen.add(text);
+
     const level = heading.className;
-    const text = heading.textContent;
     const id = `heading-${index}`;
     heading.setAttribute("id", id);
 
     const link = document.createElement("a");
     link.href = `#${id}`;
-    link.textContent = text;
     link.className = `d-block ms-${level.slice(1)}`;
+
+    const icon = document.createElement("i");
+    icon.className = "fa-solid fa-circle-dot";
+    link.appendChild(icon);
+    link.appendChild(document.createTextNode(text));
+
     tocContainer.appendChild(link);
   });
+
+  // Highlight aktif saat scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute("id");
+      const link = tocContainer.querySelector(`a[href="#${id}"]`);
+      if (link) {
+        link.classList.toggle("active", entry.isIntersecting);
+      }
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+
+  headings.forEach(h => observer.observe(h));
 });
 </script>
 
