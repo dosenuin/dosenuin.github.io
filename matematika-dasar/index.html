@@ -72,6 +72,14 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <style>
+.fixed-toc-button {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1050; /* pastikan tombol tampil di atas elemen lain */
+}
+
 @keyframes fadeInSlide {
   from { opacity: 0; transform: translateX(-30px); }
   to { opacity: 1; transform: translateX(0); }
@@ -1336,7 +1344,7 @@ mjx-table {
 </script>
 
 <!-- Tombol untuk membuka offcanvas -->
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocCanvas">
+<button class="btn btn-primary fixed-toc-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocCanvas">
   Daftar Isi
 </button>
 
