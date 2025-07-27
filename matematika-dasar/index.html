@@ -1560,7 +1560,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       // Proses semua kutipan [@apa:...]
-      document.body.innerHTML = document.body.innerHTML.replace(
+      p.innerHTML = p.innerHTML.replace(
         /\[@apa:(.*?)\]/g, 
         (match, fullAPA) => {
           refCounter++;
