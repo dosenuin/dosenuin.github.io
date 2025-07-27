@@ -1421,27 +1421,7 @@ mjx-table {
 			<a href="https://info.flagcounter.com/ude3"><img src="https://s01.flagcounter.com/count/ude3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 			</div>
 			
-			<script>
-			document.addEventListener('DOMContentLoaded', function() {
-				// Ganti [@key] dengan nomor referensi
-				document.body.innerHTML = document.body.innerHTML.replace(
-					/\[@(\w+)\]/g, 
-					(match, key) => {
-						const index = Object.keys(window.bibtexData).indexOf(key) + 1;
-						return `<sup>[${index}]</sup>`;
-					}
-				);
 
-				// Buat daftar referensi
-				const refSection = document.createElement('div');
-				refSection.innerHTML = '<h2>Referensi</h2><ol>' +
-					Object.entries(window.bibtexData).map(([key, entry]) => {
-						return `<li>${entry.author}, "${entry.title}", ${entry.journal || entry.publisher}, ${entry.year}</li>`;
-					}).join('') +
-					'</ol>';
-				document.body.appendChild(refSection);
-			});
-			</script>
 			</div>			<!-- ini akhir container -->
 
 
@@ -1542,7 +1522,28 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	const container = document.querySelector('.container');
+	// Ganti [@key] dengan nomor referensi
+	document.body.innerHTML = document.body.innerHTML.replace(
+		/\[@(\w+)\]/g, 
+		(match, key) => {
+			const index = Object.keys(window.bibtexData).indexOf(key) + 1;
+			return `<sup>[${index}]</sup>`;
+		}
+	);
 
+	// Buat daftar referensi
+	const refSection = document.createElement('div');
+	refSection.innerHTML = '<h2>Referensi</h2><ol>' +
+		Object.entries(window.bibtexData).map(([key, entry]) => {
+			return `<li>${entry.author}, "${entry.title}", ${entry.journal || entry.publisher}, ${entry.year}</li>`;
+		}).join('') +
+		'</ol>';
+	container.appendChild(refSection);
+});
+</script>
 			</body>
 			</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
