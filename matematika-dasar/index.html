@@ -1524,24 +1524,27 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	const container = document.querySelector('.container');
-	// Ganti [@key] dengan nomor referensi
-	document.body.innerHTML = document.body.innerHTML.replace(
-		/\[@(\w+)\]/g, 
-		(match, key) => {
-			const index = Object.keys(window.bibtexData).indexOf(key) + 1;
-			return `<sup>[${index}]</sup>`;
-		}
-	);
+  // Target container, bukan body
+  const container = document.querySelector('.container');
+  if (!container) return; // Hentikan jika tidak ada container
 
-	// Buat daftar referensi
-	const refSection = document.createElement('div');
-	refSection.innerHTML = '<h2>Referensi</h2><ol>' +
-		Object.entries(window.bibtexData).map(([key, entry]) => {
-			return `<li>${entry.author}, "${entry.title}", ${entry.journal || entry.publisher}, ${entry.year}</li>`;
-		}).join('') +
-		'</ol>';
-	container.appendChild(refSection);
+  // 1. Ganti [@key] dengan nomor referensi HANYA di dalam container
+  container.innerHTML = container.innerHTML.replace(
+    /\[@(\w+)\]/g, 
+    (match, key) => {
+      const index = Object.keys(window.bibtexData).indexOf(key) + 1;
+      return `<sup>[${index}]</sup>`;
+    }
+  );
+
+  // 2. Buat daftar referensi di DALAM container
+  const refSection = document.createElement('div');
+  refSection.innerHTML = '<h2>Referensi</h2><ol>' +
+    Object.entries(window.bibtexData).map(([key, entry]) => {
+      return `<li>${entry.author}, "${entry.title}", ${entry.journal || entry.publisher}, ${entry.year}</li>`;
+    }).join('') +
+    '</ol>';
+  container.appendChild(refSection); // Tambahkan ke container
 });
 </script>
 			</body>
