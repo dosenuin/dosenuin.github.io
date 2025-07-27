@@ -499,14 +499,14 @@ body {
   counter-increment: sdg;
 	counter-reset: soal-counter;
 }
-.referensi {
-  counter-increment: referensi;
-	text-decoration: none;
-}
-.referensi::after {
-	content: " [" counter(referensi) "]";
-	text-decoration: none;
-}
+<!-- .referensi { -->
+  <!-- counter-increment: referensi; -->
+	<!-- text-decoration: none; -->
+<!-- } -->
+<!-- .referensi::after { -->
+	<!-- content: " [" counter(referensi) "]"; -->
+	<!-- text-decoration: none; -->
+<!-- } -->
 .soal {
   background-color: #f8f9fa;
   border-left: 4px solid #3498db;
@@ -780,7 +780,7 @@ mjx-table {
 		<p> Misalnya, dalam konteks pertanian, hasil panen per hektar bisa berhubungan dengan faktor-faktor seperti teknologi pertanian, cuaca, dan praktik pertanian. Dalam jangka pendek, produksi bisa meningkat dengan sangat cepat, tetapi pada akhirnya, pertumbuhan panen akan mencapai batas optimalnya (maksimum) dan melambat. Fungsi panen dinyatakan sebagai $$\begin{align*}  P(t) = -3t^2 + 24t \end{align*} $$ dengan $P$ menyatakan hasil panen dalam ton per hektar dan $t$ menyatakan waktu dalam tahun.</p>
 		<p> Berapakah pertumbuhan panen pada tahun ketiga? </p>
 		<div class="jawaban">
-			<p> Pertumbunan panen merupakan turunan pertama dari fungsi panen. Jika diperhatikan kurva fungsi seperti di bawah ini jelas gradien yang akan didapatkan bernilai positif.<a class="referensi" href="#"></a></p>
+			<p> Pertumbunan panen merupakan turunan pertama dari fungsi panen. Jika diperhatikan kurva fungsi seperti di bawah ini jelas gradien yang akan didapatkan bernilai positif.</p>
 			<div class="gambar-container">
 				<img src="//i.upmath.me/svgb/TZDNTsQgEMfvPAWHPayWGtvuauKKL9JiQsvIkmVp01KlEt5dEI3OZWb-ML_56HqQynirLp-TGuw6Q2i3ZeAaaMUQ6vIzd2oJLUoOa2VgoVclhAaCUoY_lLBnWt1VkyUIR3Oa96Cp37ldyMr2q2xJYajjQkx6tG2vVyDP5QsR45UrQ8vj0yPDe9-5QHzZ3HbutS7qQ_ThxowCYgEfLoT34zvgWcmzZRFKyyb_iw1Pf3A5A5hEz8SiicyHiCoOxx-ahjdL6_s4-DeXecnnuOSijJSrkQkGRuQD5PD_qb4A" alt="upmath">
 			</div>
@@ -1423,6 +1423,8 @@ mjx-table {
 			<div class="text-center">
 				<a href="https://info.flagcounter.com/ude3"><img src="https://s01.flagcounter.com/count/ude3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 			</div>
+			<div id="referensi">
+			</div>
 			
 
 			</div>			<!-- ini akhir container -->
@@ -1525,73 +1527,72 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-  <!-- <script> -->
-    <!-- document.addEventListener('DOMContentLoaded', function() { -->
-      <!-- const container = document.querySelector('.container'); -->
-      <!-- if (!container) return; -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const referensi = document.getElementById("referensi");
+			
+      const references = {};
+      let refCounter = 0;
 
-      <!-- const references = {}; -->
-      <!-- let refCounter = 0; -->
+      // Fungsi untuk format citation (et al. jika >1 penulis)
+      function formatCitation(fullAPA) {
+        // Ekstrak bagian author dan tahun
+        const authorYearMatch = fullAPA.match(/^([^(]+)\((\d{4})\)/);
+        if (!authorYearMatch) return fullAPA;
+        
+        const authors = authorYearMatch[1].split(',').map(a => a.trim());
+        const year = authorYearMatch[2];
+        
+        // Format penulis
+        let citation;
+        if (authors.length > 1) {
+          const firstAuthor = authors[0].replace(/,.+$/, ''); // Hapus inisial
+          citation = `${firstAuthor} et al., ${year}`;
+        } else {
+          citation = `${authors[0]}, ${year}`;
+        }
+        
+        return {
+          citation: `(${citation})`,
+          fullText: fullAPA
+        };
+      }
 
-      <!-- // Fungsi untuk format citation (et al. jika >1 penulis) -->
-      <!-- function formatCitation(fullAPA) { -->
-        <!-- // Ekstrak bagian author dan tahun -->
-        <!-- const authorYearMatch = fullAPA.match(/^([^(]+)\((\d{4})\)/); -->
-        <!-- if (!authorYearMatch) return fullAPA; -->
-        
-        <!-- const authors = authorYearMatch[1].split(',').map(a => a.trim()); -->
-        <!-- const year = authorYearMatch[2]; -->
-        
-        <!-- // Format penulis -->
-        <!-- let citation; -->
-        <!-- if (authors.length > 1) { -->
-          <!-- const firstAuthor = authors[0].replace(/,.+$/, ''); // Hapus inisial -->
-          <!-- citation = `${firstAuthor} et al., ${year}`; -->
-        <!-- } else { -->
-          <!-- citation = `${authors[0]}, ${year}`; -->
-        <!-- } -->
-        
-        <!-- return { -->
-          <!-- citation: `(${citation})`, -->
-          <!-- fullText: fullAPA -->
-        <!-- }; -->
-      <!-- } -->
-
-      <!-- // Proses semua kutipan [@apa:...] -->
-      <!-- container.innerHTML = container.innerHTML.replace( -->
-        <!-- /\[@apa:(.*?)\]/g,  -->
-        <!-- (match, fullAPA) => { -->
-          <!-- refCounter++; -->
-          <!-- const refId = 'ref-' + refCounter; -->
-          <!-- const {citation, fullText} = formatCitation(fullAPA.trim()); -->
-          <!-- references[refId] = fullText; -->
+      // Proses semua kutipan [@apa:...]
+      referensi.innerHTML = referensi.innerHTML.replace(
+        /\[@apa:(.*?)\]/g, 
+        (match, fullAPA) => {
+          refCounter++;
+          const refId = 'ref-' + refCounter;
+          const {citation, fullText} = formatCitation(fullAPA.trim());
+          references[refId] = fullText;
           
-          <!-- return ` -->
-            <!-- <span class="apa-citation"  -->
-                  <!-- onclick="event.preventDefault(); -->
-                  <!-- document.getElementById('${refId}').scrollIntoView({behavior: 'smooth'});"> -->
-              <!-- ${citation} -->
-            <!-- </span> -->
-          <!-- `; -->
-        <!-- } -->
-      <!-- ); -->
+          return `
+            <span class="apa-citation" 
+                  onclick="event.preventDefault();
+                  document.getElementById('${refId}').scrollIntoView({behavior: 'smooth'});">
+              ${citation}
+            </span>
+          `;
+        }
+      );
 
-      <!-- // Buat daftar referensi -->
-      <!-- if (refCounter > 0) { -->
-        <!-- const refSection = document.createElement('section'); -->
-        <!-- refSection.id = "references"; -->
+      // Buat daftar referensi
+      if (refCounter > 0) {
+        const refSection = document.createElement('section');
+        refSection.id = "references";
         
-        <!-- let refListHTML = '<h2>References</h2><ol>'; -->
-        <!-- Object.entries(references).forEach(([id, fullText]) => { -->
-          <!-- refListHTML += `<li id="${id}">${fullText}</li>`; -->
-        <!-- }); -->
-        <!-- refListHTML += '</ol>'; -->
+        let refListHTML = '<h3>Daftar Pustaka</h3><ol>';
+        Object.entries(references).forEach(([id, fullText]) => {
+          refListHTML += `<li id="${id}">${fullText}</li>`;
+        });
+        refListHTML += '</ol>';
         
-        <!-- refSection.innerHTML = refListHTML; -->
-        <!-- container.appendChild(refSection); -->
-      <!-- } -->
-    <!-- }); -->
-  <!-- </script> -->
+        refSection.innerHTML = refListHTML;
+        referensi.appendChild(refSection);
+      }
+    });
+  </script>
 			</body>
 			</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
