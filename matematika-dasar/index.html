@@ -739,7 +739,8 @@ mjx-table {
 		Turunan: Warisan Newton dan Leibniz yang Mengubah Matematika
 	</p>
 	<p>
-		Pada abad ke-17, dua ilmuwan besar—Isaac Newton [@apa:Newton, I. (1687). Philosophiæ Naturalis Principia Mathematica. Royal Society.] 
+		Pada abad ke-17, dua ilmuwan besar—Isaac Newton 
+		[@apa:Newton, I. (1687). Philosophiæ Naturalis Principia Mathematica. Royal Society.] 
 	dan Gottfried Leibniz secara terpisah mengembangkan konsep turunan, membuka pintu bagi kalkulus modern. Konsep ini merevolusi cara kita memahami perubahan, dari gerak planet hingga optimisasi ekonomi. Di sini, kita akan menjelajahi ide mendasar turunan, mengikuti jejak para pemikir besar ini.
 	</p>
 	<p class="h5">
@@ -1559,7 +1560,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       // Proses semua kutipan [@apa:...]
-      referensi.innerHTML = referensi.innerHTML.replace(
+      document.body.innerHTML = document.body.innerHTML.replace(
         /\[@apa:(.*?)\]/g, 
         (match, fullAPA) => {
           refCounter++;
