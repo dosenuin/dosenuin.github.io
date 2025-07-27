@@ -215,6 +215,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+// Data BibTeX global (bisa ditambah di mana saja)
+window.bibtexData = window.bibtexData || {}; // Biarkan kosong awalnya
+</script>
+
 <style>
 
 			.square-button {
@@ -706,7 +711,33 @@ mjx-table {
 		Turunan: Warisan Newton dan Leibniz yang Mengubah Matematika
 	</p>
 	<p>
-		Pada abad ke-17, dua ilmuwan besar—Isaac Newton dan Gottfried Leibniz—secara terpisah mengembangkan konsep turunan, membuka pintu bagi kalkulus modern. Konsep ini merevolusi cara kita memahami perubahan, dari gerak planet hingga optimisasi ekonomi. Di sini, kita akan menjelajahi ide mendasar turunan, mengikuti jejak para pemikir besar ini.
+		Pada abad ke-17, dua ilmuwan besar—Isaac Newton [@newton1687]   
+		<script>
+    let newtonRef = {
+      "newton1687": {
+        "type": "book",
+        "author": "Newton, Isaac",
+        "title": "Philosophiæ Naturalis Principia Mathematica",
+        "year": "1687",
+        "publisher": "Royal Society"
+      }
+    };
+    Object.assign(window.bibtexData, newtonRef); // Gabungkan ke data global
+  </script> 
+	dan Gottfried Leibniz [@leibniz1684]
+  <script>
+    let leibnizRef = {
+      "leibniz1684": {
+        "type": "article",
+        "author": "Leibniz, Gottfried Wilhelm",
+        "title": "Nova Methodus pro Maximis et Minimis",
+        "journal": "Acta Eruditorum",
+        "year": "1684"
+      }
+    };
+    Object.assign(window.bibtexData, leibnizRef); // Gabungkan ke data global
+  </script>
+	—secara terpisah mengembangkan konsep turunan, membuka pintu bagi kalkulus modern. Konsep ini merevolusi cara kita memahami perubahan, dari gerak planet hingga optimisasi ekonomi. Di sini, kita akan menjelajahi ide mendasar turunan, mengikuti jejak para pemikir besar ini.
 	</p>
 	<p class="h5">
 		Turunan: Matematika di Balik Kemiringan dan Kecepatan
@@ -1486,7 +1517,27 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Ganti [@key] dengan nomor referensi
+  document.body.innerHTML = document.body.innerHTML.replace(
+    /\[@(\w+)\]/g, 
+    (match, key) => {
+      const index = Object.keys(window.bibtexData).indexOf(key) + 1;
+      return `<sup>[${index}]</sup>`;
+    }
+  );
 
+  // Buat daftar referensi
+  const refSection = document.createElement('div');
+  refSection.innerHTML = '<h2>Referensi</h2><ol>' +
+    Object.entries(window.bibtexData).map(([key, entry]) => {
+      return `<li>${entry.author}, "${entry.title}", ${entry.journal || entry.publisher}, ${entry.year}</li>`;
+    }).join('') +
+    '</ol>';
+  document.body.appendChild(refSection);
+});
+</script>
 			</body>
 			</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
