@@ -216,11 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-<script>
-// Data BibTeX global (bisa ditambah di mana saja)
-window.bibtexData = window.bibtexData || {}; // Biarkan kosong awalnya
-</script>
-
 <style>
 
 			.square-button {
@@ -695,29 +690,6 @@ mjx-table {
 }
 </style>
 
-<style>
-	.apa-citation {
-		color: #0066cc;
-		cursor: pointer;
-		font-style: normal;
-	}
-	.apa-citation:hover {
-		text-decoration: underline;
-	}
-	#references {
-		margin-top: 3em;
-		padding-top: 1em;
-		border-top: 1px solid #eee;
-		font-size: 0.9em;
-	}
-	#references ol {
-		padding-left: 1.5em;
-	}
-	#references li {
-		margin-bottom: 0.8em;
-		line-height: 1.4;
-	}
-</style>
 </head>
 
 <body>
@@ -1528,72 +1500,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const referensi = document.getElementById("referensi");
-			
-      const references = {};
-      let refCounter = 0;
 
-      // Fungsi untuk format citation (et al. jika >1 penulis)
-      function formatCitation(fullAPA) {
-        // Ekstrak bagian author dan tahun
-        const authorYearMatch = fullAPA.match(/^([^(]+)\((\d{4})\)/);
-        if (!authorYearMatch) return fullAPA;
-        
-        const authors = authorYearMatch[1].split(',').map(a => a.trim());
-        const year = authorYearMatch[2];
-        
-        // Format penulis
-        let citation;
-        if (authors.length > 1) {
-          const firstAuthor = authors[0].replace(/,.+$/, ''); // Hapus inisial
-          citation = `${firstAuthor} et al., ${year}`;
-        } else {
-          citation = `${authors[0]}, ${year}`;
-        }
-        
-        return {
-          citation: `(${citation})`,
-          fullText: fullAPA
-        };
-      }
-
-      // Proses semua kutipan [@apa:...]
-      p.innerHTML = p.innerHTML.replace(
-        /\[@apa:(.*?)\]/g, 
-        (match, fullAPA) => {
-          refCounter++;
-          const refId = 'ref-' + refCounter;
-          const {citation, fullText} = formatCitation(fullAPA.trim());
-          references[refId] = fullText;
-          
-          return `
-            <span class="apa-citation" 
-                  onclick="event.preventDefault();
-                  document.getElementById('${refId}').scrollIntoView({behavior: 'smooth'});">
-              ${citation}
-            </span>
-          `;
-        }
-      );
-
-      // Buat daftar referensi
-      if (refCounter > 0) {
-        const refSection = document.createElement('section');
-        refSection.id = "references";
-        
-        let refListHTML = '<h3>Daftar Pustaka</h3><ol>';
-        Object.entries(references).forEach(([id, fullText]) => {
-          refListHTML += `<li id="${id}">${fullText}</li>`;
-        });
-        refListHTML += '</ol>';
-        
-        refSection.innerHTML = refListHTML;
-        referensi.appendChild(refSection);
-      }
-    });
-  </script>
 			</body>
 			</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
