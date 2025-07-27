@@ -705,7 +705,43 @@ mjx-table {
 	<p class="h3">Pendahuluan</p>
 	<p class="h5">Turunan: Konsep Matematika yang Menggerakkan Dunia</p>
 	<p>
-		Pernahkah Anda bertanya-tanya bagaimana ilmuwan memprediksi kecepatan roket, ekonom menghitung pertumbuhan bisnis, atau insinyur merancang jalan yang efisien? Konsep turunan adalah jawabannya! Turunan tidak hanya abstraksi matematika, tetapi alat penting dalam sains, teknologi, dan kehidupan sehari-hari. Di materi ini, kita akan mempelajari dasar turunan, aturan-aturannya, serta aplikasinya yang menakjubkan.
+		Pernahkah Anda bertanya-tanya bagaimana ilmuwan memprediksi kecepatan roket, ekonom menghitung pertumbuhan bisnis, atau insinyur merancang jalan yang efisien? Konsep turunan adalah jawabannya! Turunan tidak hanya abstraksi matematika, tetapi alat penting dalam sains, teknologi, dan kehidupan sehari-hari. 
+<script>
+// Fungsi untuk mengonversi BibTeX ke Objek JavaScript
+function parseBibtex(bibtexStr) {
+  const entry = {};
+  const keyMatch = bibtexStr.match(/@\w+\{(\w+),/);
+  if (keyMatch) entry.key = keyMatch[1];
+  
+  // Ekstrak field-fieldnya
+  const fields = bibtexStr.matchAll(/(\w+)\s*=\s*\{([^}]+)\}/g);
+  for (const [_, field, value] of fields) {
+    entry[field] = value;
+  }
+  
+  return { [entry.key]: entry };
+}
+
+// Contoh penggunaan
+const bibtexStr = `
+@article{fuentealba2018understanding,
+  title={The understanding of the derivative concept in higher education},
+  author={Fuentealba, Claudio and Badillo, Edelmira and S{\'a}nchez-Matamoros, Gloria and C{\'a}rcamo, Andrea},
+  journal={EURASIA Journal of Mathematics, Science and Technology Education},
+  volume={15},
+  number={2},
+  pages={em1662},
+  year={2018},
+  publisher={Modestum}
+}
+`;
+
+const fuentealba2018understanding = parseBibtex(bibtexStr);
+window.bibtexData = window.bibtexData || {};
+Object.assign(window.bibtexData, fuentealba2018understanding);
+</script>
+
+		Di materi ini, kita akan mempelajari dasar turunan, aturan-aturannya, serta aplikasinya yang menakjubkan.
 	</p>
 	<p class="h5">
 		Turunan: Warisan Newton dan Leibniz yang Mengubah Matematika
