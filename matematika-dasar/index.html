@@ -1371,18 +1371,25 @@ mjx-table {
 				</div>
 				<p> Sebagai contoh tidak memperhatikan urutan dari $a,b,$ dan $c$ adalah $$ \begin{align*}\int_0^2 xdx &= \int_0^1 xdx +\int_1^2 xdx \\ \int_0^2 xdx &= \int_0^4 xdx +\int_4^2 xdx  \end{align*} $$</p>
 				<p class="h4"> Teorema Dasar Kalkulus 1 (TDK 1)</p>
-<div class="teorema">
-	<p class="h5">TDK 1</p>
-	<p> Misalkan $f$ kontinu pada selang $[a,b]$ dan misalkan $x$ adalah titik pada $(a,b),$ maka $$ \begin{align*} \dfrac{d}{dx}\int_a^x f(t) dt = f(x) \end{align*} $$</p>
-</div>
-<div class="bukti">
-	<p> Misalkan $F(x)=\displaystyle \int_a^x f(t) dt.$ Maka kita punya $$ \begin{align*} \dfrac{d}{dx} \int_a^x f(t)dt &= F'(x) \\ &= \lim_{h\to 0}\dfrac{F(x+h)-F(x)}{h} \\ &= \lim_{h\to 0}\dfrac{1}{h}\left( \int_a^{x+h} f(t)dt - \int_a^x f(t)dt\right) &= \lim_{h\to 0}\frac{1}{h}\int_h^{x+h} f(t)dt \end{align*} $$</p>
-	<p> Jika diperhatikan lebih lanjut (seperti pada gambar di bawah ini) nilai dari $\displaystyle \int_x^{x+h} f(t)dt$ akan dekat dengan $hf(x)$
-	<div class="gambar-container">
-		<img src="//i.upmath.me/svgb/lZNBb9swDIXv-xVvQIbamGLEid0V6Fxgpx26245JDrRFx1ocyZDlpm6Q_z7IdVcH6ID2Rkrgex8papPzTumTU_unRhWus3z-BABf8Ls75B3ujbFSaXLD6UZaOq7nd1sEC7EIMZ8juPaBNpLXOdfmiJpLt8Vp5mbn2_8WLUTyZlHvi0aA-84-EHpkKAMXTqS-z-9E0ZMWcJUq9l43SgWWIaIIhdHOmrpFEA-HURqCtESwEoh9EkUIUn-18tnAQLl54ME-81YThp9kVYucHLUgywRJVuGKrl5xEMSXE_BCNDsPfcaeIA7_6f3wGj3pHaQi2yqLoGHb8k6hIf2H9G5stFR1vfZNfl4tBExDhXJ9tohutggS72e5cKR3NSNInhu9Xoa3U6zkEkv4GQtrHDnOknSL06Y0xmnjuFVPjNnjyJy8KRalH5X7Wr0ITvjGOfyinGt02nV7lMFjCEka1eSNJRfGkmOBMVJGZ6fcUsECdGhq5TrJWdq4s59IdCMwrtYQL6Nvy5H2oOSReuEHmh0r5Vgordmi5SZbNsPWeYLLbX2n_apxAgdlrbEDhl-qOHxtesimFBhWTaBvK1W6F__Km29Yy4t_-Bc" alt="upmath">
-	</div>
-	</p>
-</div>
+				<div class="teorema">
+					<p class="h5">TDK 1</p>
+					<p> Misalkan $f$ kontinu pada selang $[a,b]$ dan misalkan $x$ adalah titik pada $(a,b),$ maka $$ \begin{align*} \dfrac{d}{dx}\int_a^x f(t) dt = f(x) \end{align*} $$</p>
+				</div>
+				<div class="bukti">
+					<p> Misalkan $F(x)=\displaystyle \int_a^x f(t) dt.$ Maka kita punya $$ \begin{align*} \dfrac{d}{dx} \int_a^x f(t)dt &= F'(x) \\ &= \lim_{h\to 0}\dfrac{F(x+h)-F(x)}{h} \\ &= \lim_{h\to 0}\dfrac{1}{h}\left( \int_a^{x+h} f(t)dt - \int_a^x f(t)dt\right) &= \lim_{h\to 0}\frac{1}{h}\int_h^{x+h} f(t)dt \end{align*} $$</p>
+					<p> Jika diperhatikan lebih lanjut (seperti pada gambar di bawah ini) nilai dari $\displaystyle \int_x^{x+h} f(t)dt$ akan dekat dengan $hf(x)$
+					<div class="gambar-container">
+						<img src="//i.upmath.me/svgb/lZNBb9swDIXv-xVvQIbamGLEid0V6Fxgpx26245JDrRFx1ocyZDlpm6Q_z7IdVcH6ID2Rkrgex8papPzTumTU_unRhWus3z-BABf8Ls75B3ujbFSaXLD6UZaOq7nd1sEC7EIMZ8juPaBNpLXOdfmiJpLt8Vp5mbn2_8WLUTyZlHvi0aA-84-EHpkKAMXTqS-z-9E0ZMWcJUq9l43SgWWIaIIhdHOmrpFEA-HURqCtESwEoh9EkUIUn-18tnAQLl54ME-81YThp9kVYucHLUgywRJVuGKrl5xEMSXE_BCNDsPfcaeIA7_6f3wGj3pHaQi2yqLoGHb8k6hIf2H9G5stFR1vfZNfl4tBExDhXJ9tohutggS72e5cKR3NSNInhu9Xoa3U6zkEkv4GQtrHDnOknSL06Y0xmnjuFVPjNnjyJy8KRalH5X7Wr0ITvjGOfyinGt02nV7lMFjCEka1eSNJRfGkmOBMVJGZ6fcUsECdGhq5TrJWdq4s59IdCMwrtYQL6Nvy5H2oOSReuEHmh0r5Vgordmi5SZbNsPWeYLLbX2n_apxAgdlrbEDhl-qOHxtesimFBhWTaBvK1W6F__Km29Yy4t_-Bc" alt="upmath">
+					</div>
+					</p>
+					<p> Jadi $$ \begin{align*}\frac{d}{dx}\int_a^x f(t)dt = \lim_{h\to 0}\dfrac{1}{h}(hf(x))=f(x) \end{align*} $$<br> Tentu saja bukti ini tidak sempurna karena tidak ada kepastian perubahan yang kecil $f(x)$ pada $[x,x+h].$</p>
+				</div>
+				<div class="teorema">
+					<p> Jika $f$ dan $g$ terintegralkan pada $[a,b]$ dan jika $f(x)\le g(x)$ untuk semua $x\in [a,b],$ maka $$\begin{align*}\int_a^b f(x)dx le \int_a^b g(x) dx \end{align*}  $$</p>
+				</div>
+				<div class="bukti">
+					<p> Integral tentu, seperti halnya operasi sigma akan mengawetkan pertidaksamaan.</p>
+				</div>
 				<p class="h4"> Teorema Dasar Kalkulus 2 (TDK 2)</p>
 				<p class="h4"> Teorema Nilai Rata-rata</p>
 				
