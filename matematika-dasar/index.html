@@ -33,14 +33,10 @@
     /* Tombol fixed kanan tengah */
     .fixed-toc-button {
       position: fixed;
-      <!-- right: 20px; -->
-      <!-- top: 50%; -->
 			right: 15px;
-			bottom: 30px;
-      transform: translateY(-50%);
+			bottom: 60px;
       z-index: 1050;
 			padding: 8px 16px;
-			background: #e9ecef;
 			border: none;
 			cursor: pointer;
 			transition: all 0.3s;
@@ -1375,6 +1371,14 @@ mjx-table {
 				</div>
 				<p> Sebagai contoh tidak memperhatikan urutan dari $a,b,$ dan $c$ adalah $$ \begin{align*}\int_0^2 xdx &= \int_0^1 xdx +\int_1^2 xdx \\ \int_0^2 xdx &= \int_0^4 xdx +\int_4^2 xdx  \end{align*} $$</p>
 				<p class="h4"> Teorema Dasar Kalkulus 1 (TDK 1)</p>
+<div class="teorema">
+	<p class="h5">TDK 1</p>
+	<p> Misalkan $f$ kontinu pada selang $[a,b]$ dan misalkan $x$ adalah titik pada $(a,b),$ maka $$ \begin{align*} \dfrac{d}{dx}\int_a^x f(t) dt = f(x) \end{align*} $$</p>
+</div>
+<div class="bukti">
+	<p> Misalkan $F(x)=\displaystyle \int_a^x f(t) dt.$ Maka kita punya $$ \begin{align*} \dfrac{d}{dx} \int_a^x f(t)dt &= F'(x) \\ &= \lim_{h\to 0}\dfrac{F(x+h)-F(x)}{h} \\ &= \lim_{h\to 0}\dfrac{1}{h}\left( \int_a^{x+h} f(t)dt - \int_a^x f(t)dt\right) &= \lim_{h\to 0}\frac{1}{h}\int_h^{x+h} f(t)dt \end{align*} $$</p>
+	<p> Jika diperhatikan lebih lanjut</p>
+</div>
 				<p class="h4"> Teorema Dasar Kalkulus 2 (TDK 2)</p>
 				<p class="h4"> Teorema Nilai Rata-rata</p>
 				
