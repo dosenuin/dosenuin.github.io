@@ -996,98 +996,24 @@ body {
 		<p class="h3">Eksplorasi SDGs</p>
 		<p class="h4 sdg">Tanpa Kemiskinan</p>
 		<div class="soal">
-			<p class="h5">Menghitung Laju Pertumbuhan Pendapatan Minimum</p>
-			<p>
-				 Bayangkan Anda adalah seorang analis ekonomi di Dinas Tenaga Kerja. Setiap tahun, pemerintah daerah harus menetapkan Upah Minimum Regional (UMR) agar pekerja bisa memenuhi kebutuhan hidup akibat kenaikan harga (inflasi).
-			</p>
-			<p>
-				 Latar Belakang Masalah
-			</p>
+			<p class="h5"> Menganalisis Laju Penurunan Kemiskinan</p>
+			<p> Sebuah kabupaten mencanangkan program pengentasan kemiskinan berbasis UMKM sejak tahun 2020. Persentase penduduk miskin dinyatakan dalam fungsi: $$ K(t) = \frac{20}{t+1}$$ dengan: 
 			<ul>
-				<li>UMR 2023 di daerah Anda: Rp 2,5 juta/bulan.</li>
-				<li>
-					 Inflasi tahunan rata-rata: 5% (harga kebutuhan naik 5% per tahun).
-				</li>
-				<li>Pemerintah menggunakan rumus eksponensial:</li>
+				<li> $K(t)$: persentase penduduk miskin (%) pada tahun ke-$t$ sejak program dimulai,</li>
+				<li> $t=0$ berarti tahun 2020,</li>
+				<li> Data berlaku untuk 5 tahun pertama (hingga $t=5$).</li>
 			</ul>
-			<p>
-				 $$I(t)=2,5\text{juta}\cdot e^{0,05t}$$
-			</p>
-			<div class="gambar-container">
-				<img src="//i.upmath.me/svgb/bZAxa8MwEIV3_4obMthBBBHqpUVrS4csgdIhTkGOL7ZqRTL2icoR_u91rLZk6C139713cLyixFqZQKq9dupErscpASgilV4N02HeAUiRRhFeenlWLTw7Uw9qYot0K69liVqE4mwtGUs4qCvCu2zJQUqycSa7c4__ut92e0g_Hclfq8YaTQWdHYSxPTXwhQNFyV-UEZzNXXqR8wjHHzhGOLNjsgiFrKpOWzqU2iEDatSpZVDZi7wdPD7wI4TtJl-j71K-4fnaZ9PT32V8Aw31Y1i9ppSJLcvxI3DGc5pWS16zIaaVLON9nN8" alt="upmath">
-			</div>
-			<ul>
-				<li>$I(t)$: UMR pada tahun ke-$t$.</li>
-				<li>
-					 $e^{0,05t}$: Faktor pertumbuhan eksponensial (menyesuaikan inflasi).
-				</li>
-			</ul>
-			<ol>
-				<li>
-					Hitung laju perubahan UMR terhadap waktu pada $t=10$ tahun.
-				</li>
-				<li>
-					Interpretasikan hasilnya dalam konteks kebijakan ekonomi.
-				</li>
+			<ol type="a">
+				<li> Tentukan laju perubahan kemiskinan pada tahun ke-1 dan tahun ke-4.</li>
+				<li> Jika kamu adalah bagian dari tim perumus kebijakan, apa rekomendasi kebijakanmu agar program tetap efektif hingga tahun ke-5?</li>
 			</ol>
+			</p>
 		</div>
 		<div class="pembahasan">
-			<p class="h5">1: Hitung Laju Perubahan UMR di Tahun ke-10</p>
-			<p>
-				Apa yang Ditanyakan?
-				<p>
-					<p>
-						Anda diminta menghitung seberapa cepat UMR naik tepat di tahun ke-10 (2033).
-					</p>
-					<p>
-						Langkah Penyelesaian:
-					</p>
-					<p>
-						1. Cari turunan $I(t)$ (laju perubahan sesaat):
-					</p>
-					<p>
-						$$ \frac{dI}{dt} = 2,5 \text{ juta} \cdot 0.05 \cdot e^{0,05t} = 125.000 \cdot e^{0,05t} $$
-					</p>
-					<p>
-						2. Hitung pada $t=10$:
-					</p>
-					<p>
-						$$ \left.\frac{dI}{dt}\right|_{t=10} = 125.000 \cdot e^{0,5} \approx 125.000 \cdot 1.6487 \approx Rp 206.088\text{/tahun} $$
-					</p>
-					<p>
-						Artinya:
-					</p>
-					<ul>
-						<li>Di tahun ke-10, UMR meningkat Rp 206.088 per tahun.</li>
-						<li>
-							Jika inflasi tahun 2033 adalah 5%, tetapi kenaikan UMR hanya Rp 206.088 (dari UMR tahun ke-10: $2,5 \text{ juta}$$ \cdot e^{0,5} \approx 4,12 \text{ juta}$), maka: $$ \frac{206.088}{4,12 \text{ juta}} \approx 5\% \text{ (cocok dengan inflasi)} $$
-						</li>
-					</ul>
-					<p class="h5">2: Interpretasi Kebijakan</p>
-					<p>
-						Apa Maknanya?
-					</p>
-					<ol>
-						<li>
-							Proteksi Daya Beli:
-							<ul>
-								<li>
-									Kenaikan UMR sebesar 5% per tahun hanya mempertahankan daya beli pekerja (tidak meningkatkan kesejahteraan riil).
-								</li>
-								<li>
-									Jika ingin meningkatkan kesejahteraan, UMR harus naik <span class="highlight">lebih dari laju inflasi</span>.
-								</li>
-							</ul>
-						</li>
-						<li>
-							Warning untuk Pemerintah:
-							<ul>
-								<li>
-									Jika inflasi sesungguhnya di tahun ke-10 lebih tinggi dari 5% (misal 7%), pekerja akan semakin miskin</span> karena UMR tidak cukup mengejar kenaikan harga.
-								</li>
-							</ul>
-						</li>
-					</ol>
+			<p class="h5">(a) Menghitung Laju Perubahan Kemiskinan</p>
+			<p> Turunan dari $K(t) = \dfrac{20}{t+1}$ adalah $$ K'(t) = -\dfrac{20}{(t+1)^2}$$ Jadi $$ \begin{align*}K'(1) &= -\dfrac{20}{(1+1)^2} &= -\dfrac{20}{4} = -5 \\ K'(4) &= -\dfrac{20}{(4+1)^2} &= -\dfrac{20}{5} = -0,8 \end{align*} $$</p>
+			<p> Kesimpulan yang dapat diberikan adalah program pengentasan kemiskinan paling efektif di awal, lalu dampaknya semakin kecil tiap tahun dan penurunan yang melambat ini bisa berarti masyarakat termiskin sudah terbantu, tetapi golongan rentan masih stagnan.</p>
+	
 				</div>
 				<p class="h4 sdg">Tanpa Kelaparan</p>
 				<div class="soal">
