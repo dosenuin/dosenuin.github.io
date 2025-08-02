@@ -589,7 +589,7 @@ body {
 		<p> Berapakah pertumbuhan panen pada tahun ketiga? </p>
 		<div class="jawaban">
 			<p> Pertumbunan panen merupakan turunan pertama dari fungsi panen. Sekarang mari hitung menggunakan limit: $$ \begin{align*} m_{\text{tan}} &= \lim_{h\to 0} \dfrac{f(3+h)-f(3)}{h} \\ &= \lim_{h\to 0} \dfrac{-3(3+h)^2+24(3+h)-(-3(3)^2+24(3))}{h} \\ &= \lim_{h\to 0} \dfrac{-3(9+6h+h^2)+24(3+h)-(-3(9)+24(3))}{h} \\ &= \lim_{h\to 0} \dfrac{-3(6h+h^2)+24h}{h} \\ &= \lim_{h\to 0} -3(6+h)+24 \\ &= 6. \end{align*}$$ Jadi pertumbuhan panen pada tahun ketiga adalah $6$ (ton per hektar per tahun).</p>
-			<p> Jika kita perhatikan kurva fungsi seperti di bawah ini sesuai gradien yang kita hasilakn sebelumnya yaitu bernilai positif.</p>
+			<p> Jika kita perhatikan kurva fungsi seperti di bawah ini sesuai gradien yang kita hasilkan sebelumnya yaitu bernilai positif.</p>
 			<div class="gambar-container">
 				<img src="//i.upmath.me/svgb/XVLBbsIwDL33KzKJA4xQ0QLbtC37iR1pJ6WNKRYhqZp0tKv673PJkNByifNsv-e8JCugQjN4PP3UWPq2gXHfu1JqEEkeZSHrSlsTri3hrLCtUWgqCjpxssaD-ZzyeXQrlx26cR9NG9NowIkzKqWBR9OJXVD5o0jipPY8YrQ6LQvQYph1szEg_Q3pJ4TmkErV2vp9oVt4eFnz99UHV_Ys0YjV7vU5Z_Mh60Y-rDaPWfeVLtMt7ePCWAXUI8sTl4X9BtZgdfQ58YrVJtSR5ts__k3g790RD16s43VanoPCckMaT0S93O7-2DVQTbqmu1x18qGSDd3bkUNVa6qJHIwKnkQhDnZG2bUfjYGGOahFShzM1rJE35NqwtmB3BVZcXDQIDjO_iZK4l15pixqLaoGwHCmGnm5xXcmE2XOpGfzu3dasEFZB6ZFE1foj20Ro6Uxw2z3H-EX" alt="upmath">
 			</div>
@@ -627,6 +627,7 @@ body {
 	<div class="definisi">
 		Saat dihitung turunan $f$ pada satu titik $(c,f(c))$ akan dipunyai beberapa perhitungan yang ekuivalen: $$ \begin{align*}  f'(c) &= \lim_{h\to 0} \dfrac{f(c+h)-f(c)}{h} \\ &= \lim_{l\to 0} \dfrac{f(c+l)-f(c)}{l} \\ &= \lim_{x\to c} \dfrac{f(x)-f(c)}{x-c} \end{align*} $$
 	</div>
+	<p> Pada bentuk pertama dan kedua kita lihat $l$ dan $h$ menyatakan jarak antar fungsi. Sehingga ketika $l$ dan $h$ menuju 0 maka jarak antar fungsi menjadi semakin dekat. Sementara pada bentuk ketiga menyatakan saat $x$ mendekati $c,$ maka sama saja artinya dengan jaraknya yang semakin mendekat.</p>
 	<div class="teorema">
 		<p class="h5"> Terdiferensialkan Memastikan Kekontinuan</p>
 		<p> Jika $f'(c)$ ada, maka $f(x)$ kontinu di titik $x=c.$</p>
@@ -1130,7 +1131,7 @@ body {
 					<img src="//i.upmath.me/svgb/ZZDBasQgEIbvPoWFQBNWg9llobC1z9B74sHodCPralC3gYa8e9GSQ9vTwHw_w_fPMMLVuDWZ29dsVHoE2PqopAV-FGjQQS79K30TuKYdYQ2lNSOscV5Dr0xQFohxDgKOMPPjnMiHsVZQWnd7KpjrlMRavT9zmg6narugoQA5-k8QWCZcU9aeCWvW6lBt_-kOaYZFaLQPeHphAs_WJ9zHu_dpElh5H7RxMkHEaxHOhxuclcvcF9mhHNIyTqBFThTyU689N7vkCNYvnLWduv8pinNTvkwm7ZpZ8rRdEEJoAKd_vfQb" alt="upmath">
 					</div>
 					<p> Berdasarkan uji turunan pertama maka titik maksimum terjadi saat $t=3$ karena di sebelumnya naik tetapi setelahnya monoton turun.</p>
-					<p> Jadi laju maksimumnya adalah $$\begin{align*} P(3) = -0,5(9)+3(3)+10 =14.,5  \end{align*}  $$</p>
+					<p> Jadi laju maksimumnya adalah $$\begin{align*} P(3) = -0,5(9)+3(3)+10 =14,5  \end{align*}  $$</p>
 					<p class="h5"> (b) Model Prediksi Pertumbuhan</p>
 					<p> Karena bentuknya parabola menurun, maka tanpa intervensi baru, partisipasi akan stagnan bahkan bisa menurun. Kita hitung secara langsung $P(7) = 6,5\%$ dan $P(9)=-3,5\%$. Hasil ini tidak realistis karena $P(9)$ bernilai negatif. Sehingga perlu ada intervensi sehingga kurvanya berubah menjadi positif lagi.</p>
 				</div>
@@ -1435,12 +1436,22 @@ body {
 					<p class="h5"> Menghitung Integral Skor Pemahaman</p>
 					<p> Total akumulasi skor pemahaman dapat kita tentukan melalui integral $$\begin{align*} \int_0^6 S(t)dt &= \int_0^6 10\ln (t+1) dt\end{align*}  $$ Kita dapat menggunakan aturan substitusi untuk menyelesaikan masalah berikut. Misalkan $u=t+1$ maka $du=dt$ dan saat $t=0,u=1$ dan $t=6,u=7.$ Akibatnya $$\begin{align*}\int_0^6 10\ln (t+1) &= 10\int_1^7 \ln (u) du \\ &= 10\left[u\ln u -u \right]_1^7 \\ &= 10[7\ln 7 -6] \\ &= 70\ln 7 -60 \end{align*} $$</p>
 					<p class="h5"> Rekomendasi Kebijakan</p>
-					<p> Sekarang kita bandingan terlebih dahulu antara target dan akumulasi riil. Target adalah 110 poin. Akumulasi riil adalah $70\ln 7-60.$ Cek $$\begin{align*}\text{Target} &< \text{Akumulasi Riil} \\ 110 &< 70\ln 7-60 \\ \frac{170}{70} &< \ln 7 \\ 2\frac{3}{7} &< \ln 7 &< 2 \\ \text{TIDAK MUNGKIN} \end{align*}  $$ Jadi targetnya lebih lebih besar daripada akumulasi riil. </p>
+					<p> Sekarang kita bandingan terlebih dahulu antara target dan akumulasi riil. Target adalah 110 poin. Akumulasi riil adalah $70\ln 7-60.$ Cek $$\begin{align*}\text{Target} &< \text{Akumulasi Riil} \\ 110 &< 70\ln 7-60 \\ \frac{170}{70} &< \ln 7 \\ 2\frac{3}{7} &< \ln 7 < 2 \\ &\text{TIDAK MUNGKIN} \end{align*}  $$ Jadi targetnya lebih lebih besar daripada akumulasi riil. </p>
 				</div>
 				<p class="h4 sdg">Kesetaraan Gender</p>
 				<div class="soal">
+					<p class="h5"> kumulasi Keterlibatan Perempuan dalam Kegiatan Kepemimpinan Kampus</p>
+					<p> Sebuah perguruan tinggi melacak keterlibatan mahasiswi dalam kegiatan organisasi kampus (seperti BEM, UKM, Senat) selama 6 bulan pertama sejak program “Perempuan Pemimpin” diluncurkan. Tingkat keterlibatan per bulan dinyatakan oleh fungsi: $$ K(t) = t\cdot \sqrt{t^2+1}$$ dengan
+					<ul>
+						<li> $K(t)$: jumlah partisipasi mahasiswi (dalam unit kegiatan) pada bulan ke-$t$,</li>
+						<li> $t$: waktu dalam bulan, dari $t=0$ sampai $t=6.$</li>
+					</ul>
+					</p>
+					<p> (a) Hitung total akumulasi keterlibatan mahasiswi dalam 6 bulan pertama. (b) Jika target program adalah mencapai 100 unit partisipasi selama 6 bulan, evaluasilah pencapaian program tersebut dan berikan rekomendasi kebijakan.</p>
 				</div>
 				<div class="pembahasan">
+					<p class="h5"> Menghitung Total Keterlibatan</p>
+					<p class="h5"> Evaluasi dan Kebijakan</p>
 				</div>
 
 				
