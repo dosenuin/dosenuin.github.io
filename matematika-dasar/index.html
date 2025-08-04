@@ -1356,9 +1356,9 @@ body {
 					<p>  	Indonesia menargetkan ketahanan pangan dengan menaikkan produksi beras nasional. Di suatu provinsi, data perkiraan laju produksi beras per minggu dari awal musim panen (minggu ke-$t$) diberikan oleh fungsi: $R(t)=3t^2+5$ (dalam ton/ha/minggu). Musim panen berlangsung selama 8 minggu. (a) Berapa total produksi beras per hektar selama musim panen berlangsung (8 minggu)? (b) Berdasarkan hasil total produksi, jika kebutuhan konsumsi beras lokal adalah 140 ton per hektar per musim, buatlah rekomendasi kebijakan yang seharusnya diambil oleh pemerintah daerah agar target tetap tercapai.</p>
 				</div>
 				<div class="pembahasan">
-					<p class="h5"> Menghitung Total Produksi Beras</p>
+					<p class="h5">(a) Menghitung Total Produksi Beras</p>
 					<p> Total Produksi selama 8 minggu dapat kita hitung menggunakan integral $$ \begin{align*}\int_0^8 &= \int_0^8 (3t^2+5)dt \\ &= \left[ t^3+5t\right]_0^8 \\ &= ((8)^3+5(8)) - (0) \\ &= 552 \end{align*} $$ Jadi total produksi beras dalam 8 minggu adalah 552 ton per hektar.</p>
-					<p class="h5"> Rekomendasi Kebijakan</p>
+					<p class="h5"> (b) Rekomendasi Kebijakan</p>
 					<p> Kita bandingkan antara kebutuhan dan logistik yang tersedia $$ 552-140 = 512$$ Artinya terdapat surplus yang besar pada daerah ini. Maka kebijakan yang tepat adalah melakukan pertukaran barang dan jasa dengan daerah lain. Sehingga daerah ini dapat memenuhi kebutuhannya di bidang lain dan menyalurkan beras daerah ini ke tempat yang defisit.</p>
 				</div>
 				<p class="h4 sdg">Kehidupan Sehat dan Sejahtera</p>
@@ -1378,9 +1378,9 @@ body {
 					<p>Sebuah studi dilakukan untuk mengukur efektivitas program peningkatan literasi numerasi mahasiswa tahun pertama. Skor rata-rata pemahaman materi matematika dinyatakan sebagai fungsi terhadap waktu (bulan) sejak awal semester: $S(t)=10ln(t+1)$ dengan $S(t)$ adalah skor rata-rata pemahaman matematika pada bulan ke-$t$ (dalam skala 0–100), $t$ dalam bulan sejak awal semester, dengan $0\le t\le 6.$ (a) Hitung total akumulasi skor pemahaman mahasiswa dari bulan ke-0 hingga bulan ke-6. (b) Jika pemerintah menargetkan pencapaian skor kumulatif minimal 110 poin untuk memenuhi standar pembelajaran nasional, apa kebijakan yang sebaiknya diambil berdasarkan hasil perhitungan tersebut? </p>
 				</div>
 				<div class="pembahasan">
-					<p class="h5"> Menghitung Integral Skor Pemahaman</p>
+					<p class="h5"> (a) Menghitung Integral Skor Pemahaman</p>
 					<p> Total akumulasi skor pemahaman dapat kita tentukan melalui integral $$\begin{align*} \int_0^6 S(t)dt &= \int_0^6 10\ln (t+1) dt\end{align*}  $$ Kita dapat menggunakan aturan substitusi untuk menyelesaikan masalah berikut. Misalkan $u=t+1$ maka $du=dt$ dan saat $t=0,u=1$ dan $t=6,u=7.$ Akibatnya $$\begin{align*}\int_0^6 10\ln (t+1) &= 10\int_1^7 \ln (u) du \\ &= 10\left[u\ln u -u \right]_1^7 \\ &= 10[7\ln 7 -6] \\ &= 70\ln 7 -60 \end{align*} $$</p>
-					<p class="h5"> Rekomendasi Kebijakan</p>
+					<p class="h5"> (b) Rekomendasi Kebijakan</p>
 					<p> Sekarang kita bandingan terlebih dahulu antara target dan akumulasi riil. Target adalah 110 poin. Akumulasi riil adalah $70\ln 7-60.$ Cek $$\begin{align*}\text{Target} &< \text{Akumulasi Riil} \\ 110 &< 70\ln 7-60 \\ \frac{170}{70} &< \ln 7 \\ 2\frac{3}{7} &< \ln 7 < 2 \\ &\text{TIDAK MUNGKIN} \end{align*}  $$ Jadi targetnya lebih lebih besar daripada akumulasi riil. </p>
 				</div>
 				<p class="h4 sdg">Kesetaraan Gender</p>
@@ -1395,10 +1395,10 @@ body {
 					<p> (a) Hitung total akumulasi keterlibatan mahasiswi dalam 6 bulan pertama. (b) Jika target program adalah mencapai 100 unit partisipasi selama 6 bulan, evaluasilah pencapaian program tersebut dan berikan rekomendasi kebijakan.</p>
 				</div>
 				<div class="pembahasan">
-					<p class="h5"> Menghitung Total Keterlibatan</p>
+					<p class="h5"> (a) Menghitung Total Keterlibatan</p>
 					<p> Kita akan menghitung total keterlibatan dari integral $\displaystyle \int_0^6 t\cdot\sqrt{t^2+64} dt.$ Namun kita tidak dapat langsung mengintegralkannya tanpa menggunakan aturan substitusi. </p>
 					<p> Misalkan $u=t^2+64,$ maka $du = 2tdt.$ Akibatnya saat $t=0,u=64$ dan $t=6,u=100.$ Maka $$ \begin{align*} \int_0^6 t\sqrt{t^2+64} dt &= \int_{64}^{100}\sqrt{u}\left(\frac{1}{2}du\right) \\ &= \frac{1}{2}\int_{64}^{100}u^{1/2}du \\ &= \frac{1}{2}\cdot \left[ \frac{2}{3}u^{3/2}\right]_{64}^{100}  \\ &= \frac{1}{3}\left( 100^{3/2}-64^{3/2}\right) \\ &= 162\dfrac{2}{3}\end{align*} $$ Jadi total akumulasi keterlibatan mahasiswa dalam 6 bulan pertama adalah $162\dfrac{2}{3}.$</p>
-					<p class="h5"> Evaluasi dan Kebijakan</p>
+					<p class="h5"> (b) Evaluasi dan Kebijakan</p>
 					<p> Perhatikan bahwa targetnya adalah 100. Sedangkan telah kita hitung bahwa akumulasi riil yang terjadi adalah $162\dfrac{2}{3}.$ Jadi kita bisa simpulkan bahwa program ini sangat sukses. Program ini dapat dilanjutkan.</p>
 				</div>
 
