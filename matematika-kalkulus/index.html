@@ -567,16 +567,15 @@ body {
         
         /* Posisi untuk desktop */
         @media (min-width: 768px) {
-
-    .motivation-popup {
-
-        left: 50%;
-        transform: translate(-50%, calc(-50% + 20px));
-    }
-    
-    .motivation-popup.show {
-        transform: translate(-50%, -50%);
-    }
+					.motivation-popup {
+        left: 50px;
+        top: 50%;
+        transform: translateY(calc(-50% + 20px));
+					}
+					
+					.motivation-popup.show {
+        transform: translateY(-50%);
+				}
         }
         
         /* Posisi untuk mobile */
@@ -1800,8 +1799,8 @@ document.addEventListener("DOMContentLoaded", function() {
             // Event listener untuk tombol close
             closeBtn.addEventListener('click', closePopup);
             
-            // Tampilkan popup pertama kali setelah 30 detik
-            setTimeout(showPopup, 30*1000);
+            // Tampilkan popup pertama kali setelah 10 detik
+            setTimeout(showPopup, 10*1000);
             
             // Set interval untuk menampilkan popup setiap 2*60 detik
             popupTimer = setInterval(showPopup, 2*60*1000);
