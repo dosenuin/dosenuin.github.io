@@ -529,7 +529,107 @@ body {
 }
 
 </style>
-
+<style>
+        /* Style untuk popup motivasi */
+        .motivation-popup {
+            position: fixed;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-width: 350px;
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .motivation-popup.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Posisi untuk desktop */
+        @media (min-width: 768px) {
+            .motivation-popup {
+                left: 50px;
+                top: 50%;
+                transform: translateY(calc(-50% + 20px));
+            }
+            
+            .motivation-popup.show {
+                transform: translateY(-50%);
+            }
+        }
+        
+        /* Posisi untuk mobile */
+        @media (max-width: 767px) {
+            .motivation-popup {
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, calc(-50% + 20px));
+            }
+            
+            .motivation-popup.show {
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .popup-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+        }
+        
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+        
+        .motivation-text {
+            font-style: italic;
+            color: #34495e;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        .timer-bar {
+            height: 5px;
+            background: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .timer-progress {
+            height: 100%;
+            background: #3498db;
+            width: 100%;
+            transition: width 10s linear;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+</style>
 </head>
 
 <body>
@@ -1511,6 +1611,92 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+
+    <!-- Popup Motivasi -->
+    <div class="motivation-popup" id="motivationPopup">
+        <div class="popup-header">
+            <div class="popup-title">💡 Kata Motivasi</div>
+            <button class="close-btn" id="closePopup">&times;</button>
+        </div>
+        <div class="motivation-text" id="motivationText">
+            "Matematika adalah bahasa yang digunakan alam untuk berbicara dengan kita."
+        </div>
+        <div class="timer-bar">
+            <div class="timer-progress" id="timerProgress"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('motivationPopup');
+            const closeBtn = document.getElementById('closePopup');
+            const timerProgress = document.getElementById('timerProgress');
+            const motivationText = document.getElementById('motivationText');
+            
+            // Daftar kutipan motivasi
+            const motivations = [
+                "Jangan menyerah, proses memahami kalkulus butuh waktu!",
+                "Setiap masalah kalkulus yang kamu selesaikan membuatmu lebih pintar.",
+                "Kalkulus adalah bahasa alam semesta - pelajari dengan sabar.",
+                "Masalah sulit hari ini akan menjadi mudah besok. Terus berlatih!",
+                "Keindahan matematika hanya terungkap kepada para pencinta kesabaran.",
+                "Matematika bukan tentang angka, tapi tentang pemahaman.",
+                "Kegagalan adalah bagian dari proses belajar. Bangkit dan coba lagi!",
+                "Kalkulus mungkin terlihat menakutkan, tapi kamu lebih tangguh.",
+                "Setiap langkah kecil dalam belajar membawamu lebih dekat kepada penguasaan.",
+                "Pemahaman yang mendalam datang dari konsistensi, bukan kecepatan."
+            ];
+            
+            let popupTimer;
+            let autoCloseTimer;
+            
+            // Fungsi untuk menampilkan popup
+            function showPopup() {
+                // Acak kutipan motivasi
+                const randomIndex = Math.floor(Math.random() * motivations.length);
+                motivationText.textContent = `"${motivations[randomIndex]}"`;
+                
+                // Tampilkan popup
+                popup.classList.add('show');
+                
+                // Reset dan mulai timer progress bar
+                timerProgress.style.transition = 'none';
+                timerProgress.style.width = '100%';
+                void timerProgress.offsetWidth; // Trigger reflow
+                timerProgress.style.transition = 'width 10s linear';
+                timerProgress.style.width = '0%';
+                
+                // Set timer untuk menutup otomatis setelah 10 detik
+                clearTimeout(autoCloseTimer);
+                autoCloseTimer = setTimeout(closePopup, 10000);
+            }
+            
+            // Fungsi untuk menutup popup
+            function closePopup() {
+                popup.classList.remove('show');
+                clearTimeout(autoCloseTimer);
+            }
+            
+            // Event listener untuk tombol close
+            closeBtn.addEventListener('click', closePopup);
+            
+            // Tampilkan popup pertama kali setelah 2 detik
+            setTimeout(showPopup, 2000);
+            
+            // Set interval untuk menampilkan popup setiap 30 detik
+            popupTimer = setInterval(showPopup, 30000);
+            
+            // Hentikan interval ketika halaman ditutup/tidak aktif
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    clearInterval(popupTimer);
+                    clearTimeout(autoCloseTimer);
+                } else {
+                    popupTimer = setInterval(showPopup, 30000);
+                }
+            });
+        });
+    </script>
 
 			</body>
 			</html>
