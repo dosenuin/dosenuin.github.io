@@ -16,14 +16,14 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
-		MathJax = {
-				tex: {
-						inlineMath: [
-								['$', '$'],
-								['\\(', '\\)']
-						]
-				}
-		};
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
 </script>
 
   <!-- Font Awesome untuk ikon -->
@@ -178,7 +178,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* Mencegah scroll horizontal */
+  overflow-x: hidden; /* PERBAIKAN: Mencegah scroll horizontal */
+  width: 100%; /* PERBAIKAN: Pastikan body tidak melebihi viewport */
 }
 
 /* Atur lebar maksimum konten agar nyaman dibaca */
@@ -186,6 +187,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  overflow: hidden; /* PERBAIKAN: Mencegah overflow */
 }
 
 /* ==========================================================================
@@ -378,7 +380,7 @@ strong, b {
 }
 
 .gambar-container img {
-  max-width: 100%;
+  max-width: 100%; /* PERBAIKAN: Pastikan gambar tidak melebihi container */
   height: auto;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
@@ -431,6 +433,13 @@ strong, b {
   border: none;
 }
 
+/* Posisi untuk mobile */
+@media (max-width: 767px) {
+  .back-to-top,.fixed-toc-button {
+    right: 20%;
+  }
+}
+
 .back-to-top { bottom: 15px; }
 .fixed-toc-button { bottom: 70px; }
 
@@ -478,6 +487,7 @@ mjx-container {
   overflow-y: hidden;
   padding: 2px;
   margin: 1rem 0;
+  max-width: 100%; /* PERBAIKAN: Pastikan MathJax tidak menyebabkan overflow */
 }
 
 /* ==========================================================================
@@ -485,15 +495,15 @@ mjx-container {
    ========================================================================== */
 
 @media (max-width: 768px) {
- .h1 { font-size: 2rem; }
- .h2 { font-size: 1.5rem; }
- .h3 { font-size: 1.25rem; }
+  .h1 { font-size: 2rem; }
+  .h2 { font-size: 1.5rem; }
+  .h3 { font-size: 1.25rem; }
 
- .container {
+  .container {
     padding: 1.5rem 1rem;
   }
 
- .gambar-container img.zoomed {
+  .gambar-container img.zoomed {
     transform: translate(-50%, -50%) scale(1);
     max-width: 95vw;
     overflow: auto;
@@ -530,104 +540,105 @@ body {
 
 </style>
 <style>
-        /* Style untuk popup motivasi */
-        .motivation-popup {
-            position: fixed;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 1000;
-            max-width: 350px;
-            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        .motivation-popup.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Posisi untuk desktop */
-        @media (min-width: 768px) {
-            .motivation-popup {
-                left: 50px;
-                top: 50%;
-                transform: translateY(calc(-50% + 20px));
-            }
-            
-            .motivation-popup.show {
-                transform: translateY(-50%);
-            }
-        }
-        
-        /* Posisi untuk mobile */
-        @media (max-width: 767px) {
-            .motivation-popup {
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, calc(-50% + 20px));
-            }
-            
-            .motivation-popup.show {
-                transform: translate(-50%, -50%);
-            }
-        }
-        
-        .popup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .popup-title {
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 1.2rem;
-        }
-        
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #7f8c8d;
-            transition: color 0.3s;
-        }
-        
-        .close-btn:hover {
-            color: #e74c3c;
-        }
-        
-        .motivation-text {
-            font-style: italic;
-            color: #34495e;
-            margin-bottom: 20px;
-            line-height: 1.5;
-            text-align: center;
-        }
-        
-        .timer-bar {
-            height: 5px;
-            background: #ecf0f1;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .timer-progress {
-            height: 100%;
-            background: #3498db;
-            width: 100%;
-            transition: width 10s linear;
-        }
-        
+/* Style untuk popup motivasi */
+.motivation-popup {
+    position: fixed;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-width: 350px;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.motivation-popup.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Posisi untuk desktop */
+@media (min-width: 768px) {
+    .motivation-popup {
+        left: 50px;
+        top: 50%;
+        transform: translateY(calc(-50% + 20px));
+    }
+    
+    .motivation-popup.show {
+        transform: translateY(-50%);
+    }
+}
+
+/* PERBAIKAN: Posisi untuk mobile - benar-benar di tengah */
+@media (max-width: 767px) {
+    .motivation-popup {
+        width: 90%;
+        max-width: 90%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, calc(-50% + 20px));
+    }
+    
+    .motivation-popup.show {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.popup-title {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #e74c3c;
+}
+
+.motivation-text {
+    font-style: italic;
+    color: #34495e;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.timer-bar {
+    height: 5px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.timer-progress {
+    height: 100%;
+    background: #3498db;
+    width: 100%;
+    transition: width 10s linear;
+}
 </style>
 </head>
 
 <body>
-<div class="container">
+<div class="container">	
 	<p class="h1">Matematika Kalkulus</p>
 	<!-- <div class="d-flex flex-wrap justify-content-center gap-3"> -->
 		<!-- <a class="btn btn-primary square-button" href="#turunan">Turunan</a> -->
@@ -1497,46 +1508,43 @@ body {
 				</div>
 
 				
-			<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-			<div class="text-center">
-				<a href="https://info.flagcounter.com/ude3"><img src="https://s01.flagcounter.com/count/ude3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
-			</div>
-			<div id="referensi">
-			</div>
-			
-			
-			</div>			<!-- ini akhir container -->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div class="text-center">
+        <a href="https://info.flagcounter.com/ude3"><img src="https://s01.flagcounter.com/count/ude3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_30/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+    </div>
+    <div id="referensi">
+    </div>
+</div>			<!-- ini akhir container -->
 
 
 <script>
-	// MODE KOREKSI
-	document.addEventListener('DOMContentLoaded', function() {
-			let hiddenTime;
-			let timeoutId;
-			const refreshAfter = 5*60*1000; // 1 menit dalam milidetik (60 * 1000)
-			function handleVisibilityChange() {
-					if (document.hidden) {
-							// Tab menjadi tidak terlihat, catat waktu
-							hiddenTime = Date.now();
-							// Set timeout untuk refresh
-							timeoutId = setTimeout(() => {
-									window.location.reload();
-							}, refreshAfter);
-					} else {
-							// Tab kembali terlihat, clear timeout jika ada
-							if (timeoutId) {
-									clearTimeout(timeoutId);
-							}
-					}
-			}
-			// Tambahkan event listener untuk visibility change
-			document.addEventListener('visibilitychange', handleVisibilityChange);
-			// Juga handle kasus ketika halaman sudah dalam keadaan hidden saat load
-			if (document.hidden) {
-					handleVisibilityChange();
-			}
-	});
-				
+    // MODE KOREKSI
+    document.addEventListener('DOMContentLoaded', function() {
+        let hiddenTime;
+        let timeoutId;
+        const refreshAfter = 5*60*1000; // 1 menit dalam milidetik (60 * 1000)
+        function handleVisibilityChange() {
+            if (document.hidden) {
+                // Tab menjadi tidak terlihat, catat waktu
+                hiddenTime = Date.now();
+                // Set timeout untuk refresh
+                timeoutId = setTimeout(() => {
+                    window.location.reload();
+                }, refreshAfter);
+            } else {
+                // Tab kembali terlihat, clear timeout jika ada
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+            }
+        }
+        // Tambahkan event listener untuk visibility change
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        // Juga handle kasus ketika halaman sudah dalam keadaan hidden saat load
+        if (document.hidden) {
+            handleVisibilityChange();
+        }
+    });
 </script>
 
 <!-- Tombol untuk membuka offcanvas -->
@@ -1620,7 +1628,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="timer-progress" id="timerProgress"></div>
         </div>
     </div>
-		
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const popup = document.getElementById('motivationPopup');
@@ -1637,115 +1645,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 "Kalkulus mungkin terlihat menakutkan, tapi kamu lebih tangguh.",
                 "Setiap langkah kecil dalam belajar membawamu lebih dekat kepada penguasaan.",
                 "Pemahaman yang mendalam datang dari konsistensi, bukan kecepatan.",
-"Setiap masalah matematika yang kamu selesaikan membuatmu lebih pintar.",
-"Matematika adalah bahasa logika - pelajari dengan sabar.",
-"Masalah sulit hari ini akan menjadi mudah besok. Terus berlatih!",
-"Keindahan matematika hanya terungkap kepada para pencinta kesabaran.",
-"Matematika bukan tentang angka, tapi tentang pemahaman.",
-"Kegagalan adalah bagian dari proses belajar. Bangkit dan coba lagi!",
-"Soal sulit mungkin menakutkan, tapi kamu lebih tangguh.",
-"Setiap langkah kecil dalam belajar membawamu lebih dekat kepada penguasaan.",
-"Pemahaman yang mendalam datang dari konsistensi, bukan kecepatan.",
-
-"Setiap kesalahan adalah guru terbaikmu.",
-"Belajar matematika melatih kesabaran dan ketekunanmu.",
-"Tidak ada jalan pintas, tapi selalu ada jalan keluar.",
-"Jika orang lain bisa, kamu juga bisa.",
-"Kamu tidak sendirian, banyak yang PERNAH kesulitan matematika.",
-"Matematika melatih otak agar lebih tajam dan terlatih.",
-"Jangan takut bertanya, itu tanda semangat belajarmu.",
-"Belajar matematika adalah investasi jangka panjang.",
-"Kamu boleh lambat, asal jangan berhenti.",
-"Rasa takut hanya ada di pikiranmu, bukan di soalnya.",
-
-"Setiap soal punya solusi, begitu juga masalah hidupmu.",
-"Kamu tidak perlu sempurna, cukup berkembang setiap hari.",
-"Kesabaranmu hari ini akan membuahkan hasil besok.",
-"Belajar matematika adalah melatih logika kehidupan.",
-"Kamu berhak gagal, tapi jangan berhenti mencoba.",
-"Rasa cemas hanyalah awan gelap yang akan berlalu.",
-"Kamu cukup kuat untuk menaklukkan soal apa pun.",
-"Satu soal sulit tidak menentukan seluruh kemampuanmu.",
-
-"Setiap latihan membuatmu semakin terampil.",
-"Jangan biarkan kecemasan menguasaimu, kamu yang mengendalikan.",
-"Kamu lebih cerdas daripada yang kamu kira.",
-"Fokuslah pada proses, hasil akan mengikuti.",
-"Soal sulit hanyalah batu loncatan menuju keberhasilan.",
-"Matematika melatih ketelitian dan kesabaranmu.",
-"Tidak perlu terburu-buru, setiap orang punya ritme belajar.",
-"Setiap keberhasilan kecil patut dirayakan.",
-
-"Matematika tidak pernah mengkhianati orang yang sabar.",
-"Belajar matematika itu seperti melatih otot, semakin sering semakin kuat.",
-"Rasa takut adalah tanda bahwa kamu sedang bertumbuh.",
-"Kamu sedang menulis kisah suksesmu sendiri.",
-"Soal sulit hanyalah tantangan, bukan penghalang.",
-"Kamu adalah pejuang yang pantang menyerah.",
-"Setiap usaha sekecil apa pun tetap berharga.",
-"Kamu sedang berproses menuju versi terbaik dirimu.",
-"Matematika adalah sahabat logika, bukan musuhmu.",
-"Jangan biarkan satu kegagalan membuatmu berhenti.",
-
-"Kamu lebih tangguh dari rasa takutmu.",
-"Kamu punya hak untuk salah dan memperbaikinya.",
-"Setiap orang hebat pernah jadi pemula.",
-"Jangan bandingkan dirimu dengan orang lain, bandingkan dengan dirimu kemarin.",
-"Soal sulit hanyalah latihan mental untuk masa depanmu.",
-"Rasa cemas hanyalah rintangan kecil, bukan dinding penghalang.",
-"Kamu bisa menaklukkan matematika dengan sabar dan tekun.",
-
-"Jangan biarkan pikiran negatif menguasaimu.",
-"Kamu lebih kuat dari yang kamu bayangkan.",
-"Matematika melatihmu untuk menghadapi masalah nyata.",
-"Soal sulit hanyalah kode rahasia yang menunggu dipecahkan.",
-"Kamu sedang melatih disiplin melalui matematika.",
-"Setiap kesulitan adalah peluang untuk berkembang.",
-"Kamu bisa memandang matematika dari sisi yang menyenangkan.",
-"Soal sulit hari ini akan jadi mudah besok.",
-"Kamu adalah pembelajar seumur hidup.",
-
-"Kesalahanmu adalah bukti bahwa kamu sedang mencoba.",
-"Kamu cukup berani untuk menghadapi soal apa pun.",
-"Matematika bukan tentang kecepatan, tapi tentang ketekunan.",
-"Soal yang sulit hanya sementara, pemahamanmu selamanya.",
-"Kamu bisa lebih baik dari dirimu kemarin.",
-"Belajar matematika mengajarkanmu arti ketekunan.",
-"Soal sulit bukan akhir dunia, tapi awal pemahaman.",
-"Kamu bisa menjadikan matematika sebagai teman, bukan musuh.",
-"Setiap detik belajar adalah langkah menuju sukses.",
-
-"Kamu sedang mengasah logika yang akan berguna sepanjang hidup.",
-"Setiap usaha belajar adalah amal baik untuk dirimu.",
-"Kamu bisa belajar dengan tenang, tidak ada yang terburu-buru.",
-"Soal sulit hanyalah teka-teki yang menunggu solusimu.",
-"Kamu lebih kreatif dari yang kamu kira.",
-"Matematika adalah alat untuk memahami dunia.",
-"Belajar matematika melatih kesabaran hatimu.",
-"Kamu sedang membangun pondasi kesuksesan.",
-"Rasa takut akan hilang jika kamu terus mencoba.",
-
-"Kamu bisa mengubah kecemasan menjadi energi positif.",
-"Soal sulit adalah peluang untuk membuktikan dirimu.",
-"Kamu tidak kalah hanya karena butuh waktu lebih lama.",
-"Kamu layak menjadi orang yang paham matematika.",
-"Jangan menyerah, karena setiap usaha tidak sia-sia.",
-"Kamu sedang melatih keuletanmu.",
-"Soal sulit hanyalah latihan, bukan penghalang.",
-"Kamu mampu menguasai matematika dengan sabar.",
-"Percaya pada proses, hasil akan datang.",
-
-"Belajar matematika adalah perjalanan, bukan tujuan akhir.",
-"Kamu sedang menyiapkan masa depanmu dengan ilmu.",
-"Matematika melatihmu untuk lebih fokus dan sabar.",
-"Rasa cemas hanya sementara, pemahaman akan abadi.",
-"Soal sulit akan menjadi mudah jika kamu terus mencoba.",
-"Kamu bisa mengatasi segala tantangan dengan usaha.",
-"Matematika adalah seni berpikir, dan kamu sedang melatihnya.",
-"Kamu lebih pintar dari yang kamu kira.",
-"Soal sulit hanyalah bagian dari perjalanan belajarmu.",
-"Kamu bisa menaklukkan matematika langkah demi langkah."
-
+                // ... (daftar kutipan lainnya)
             ];
             
             let popupTimer;
@@ -1799,8 +1699,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     </script>
 
-			</body>
-			</html>
+</body>
+</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
 			<!-- referensi bisa pakai tooltip -->
 			
