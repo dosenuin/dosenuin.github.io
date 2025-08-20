@@ -183,7 +183,7 @@ body {
 		padding: 0px 50px;
 }
 
-@media (min-width: 767px) {
+@media (max-width: 767px) {
 		padding: 0px 10px;
 
 }
@@ -1839,7 +1839,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Ubah gaya untuk plesetan
             motivationText.style.fontStyle = 'italic';
             motivationText.style.color = '#E67E22';
-            document.querySelector('.popup-title').innerHTML = '😂 Plesetan Lucu';
+            document.querySelector('.popup-title').innerHTML = '😂 KATA-kata';
         } else {
             // Tampilkan motivasi
             const randomIndex = Math.floor(Math.random() * motivations.length);
@@ -1849,7 +1849,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Kembalikan gaya untuk motivasi
             motivationText.style.fontStyle = 'italic';
             motivationText.style.color = '#34495e';
-            document.querySelector('.popup-title').innerHTML = '💡 Kata Motivasi';
+            document.querySelector('.popup-title').innerHTML = '💡 KATA-kata';
         }
         
         motivationText.textContent = `"${randomText}"`;
