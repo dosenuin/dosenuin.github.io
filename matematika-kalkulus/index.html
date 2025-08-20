@@ -623,12 +623,6 @@ body {
             transition: width 10s linear;
         }
         
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
 </style>
 </head>
 
@@ -1510,19 +1504,7 @@ body {
 			<div id="referensi">
 			</div>
 			
-    <!-- Popup Motivasi -->
-    <div class="motivation-popup" id="motivationPopup">
-        <div class="popup-header">
-            <div class="popup-title">💡 KATA-kata</div>
-            <button class="close-btn" id="closePopup">&times;</button>
-        </div>
-        <div class="motivation-text" id="motivationText">
-            "Matematika adalah bahasa yang digunakan alam untuk berbicara dengan kita."
-        </div>
-        <div class="timer-bar">
-            <div class="timer-progress" id="timerProgress"></div>
-        </div>
-    </div>
+			
 			</div>			<!-- ini akhir container -->
 
 
@@ -1625,7 +1607,20 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
-
+    <!-- Popup Motivasi -->
+    <div class="motivation-popup" id="motivationPopup">
+        <div class="popup-header">
+            <div class="popup-title">💡 KATA-kata</div>
+            <button class="close-btn" id="closePopup">&times;</button>
+        </div>
+        <div class="motivation-text" id="motivationText">
+            "Matematika adalah bahasa yang digunakan alam untuk berbicara dengan kita."
+        </div>
+        <div class="timer-bar">
+            <div class="timer-progress" id="timerProgress"></div>
+        </div>
+    </div>
+		
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const popup = document.getElementById('motivationPopup');
