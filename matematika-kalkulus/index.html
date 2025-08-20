@@ -1639,12 +1639,12 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 		
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const popup = document.getElementById('motivationPopup');
-            const closeBtn = document.getElementById('closePopup');
-            const timerProgress = document.getElementById('timerProgress');
-            const motivationText = document.getElementById('motivationText');
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('motivationPopup');
+    const closeBtn = document.getElementById('closePopup');
+    const timerProgress = document.getElementById('timerProgress');
+    const motivationText = document.getElementById('motivationText');
             
             // Daftar kutipan motivasi
             const motivations = [
@@ -1766,57 +1766,135 @@ document.addEventListener("DOMContentLoaded", function() {
 
             ];
             
-            let popupTimer;
-            let autoCloseTimer;
-            
-            // Fungsi untuk menampilkan popup
-            function showPopup() {
-                // Acak kutipan motivasi
-                const randomIndex = Math.floor(Math.random() * motivations.length);
-                motivationText.textContent = `"${motivations[randomIndex]}"`;
-                
-                // Tampilkan popup
-                popup.classList.add('show');
-                
-                // Reset dan mulai timer progress bar
-                timerProgress.style.transition = 'none';
-                timerProgress.style.width = '100%';
-                void timerProgress.offsetWidth; // Trigger reflow
-                timerProgress.style.transition = 'width 10s linear';
-                timerProgress.style.width = '0%';
-                
-                // Set timer untuk menutup otomatis setelah 10 detik
-                clearTimeout(autoCloseTimer);
-                autoCloseTimer = setTimeout(closePopup, 1*1000);
-            }
-            
-            // Fungsi untuk menutup popup
-            function closePopup() {
-                popup.classList.remove('show');
-                clearTimeout(autoCloseTimer);
-            }
-            
-            // Event listener untuk tombol close
-            closeBtn.addEventListener('click', closePopup);
-            
-            // Tampilkan popup pertama kali setelah 10 detik
-            setTimeout(showPopup, 1*1000);
-            
-            // Set interval untuk menampilkan popup setiap 2*60 detik
-            popupTimer = setInterval(showPopup, 5*1000);
-            
-            // Hentikan interval ketika halaman ditutup/tidak aktif
-            document.addEventListener('visibilitychange', function() {
-                if (document.hidden) {
-                    clearInterval(popupTimer);
-                    clearTimeout(autoCloseTimer);
-                } else {
-                    popupTimer = setInterval(showPopup, 5*1000);
-                }
-            });
-        });
-    </script>
+						const plesetan = [
+"Jangan menyerah, proses memahami kalkulus butuh waktu… sama kayak nunggu cinta kamyu",
+"Kalkulus adalah bahasa alam semesta – tapi sayangnya nggak ada subtitle.",
+"Masalah sulit hari ini akan jadi mudah besok… asal jangan kamu ditinggal tidur seharian.",
+"Kegagalan adalah bagian dari proses belajar – jadi jangan takut salah, takutnya malah nggak nyobain.",
+"Kalkulus mungkin menakutkan, lha wong setan aja kabur kalau lihat integral panjang.",
+"Setiap langkah kecil dalam belajar… kayak ngicil utang, lama-lama lunas juga.",
+"Setiap masalah matematika yang kamu selesaikan bikin kamu lebih pintar… minimal lebih pintar dari kalkulator kehabisan baterai.",
+"Matematika adalah bahasa logika – tapi kenapa logikaku malah error pas ujian?",
 
+"Matematika bukan tentang angka, tapi tentang pemahaman – tapi angka di KHS juga penting sih.",
+"Kegagalan adalah bagian dari proses belajar – kalau nilaimu E, itu namanya pengalaman spiritual.",
+"Soal sulit mungkin menakutkan, tapi kamu lebih tangguh – buktinya kamu masih kuat buka lembar soal.",
+"Pemahaman datang dari konsistensi, bukan kecepatan – makanya jangan kayak belajar SKS (Sistem Kebut Semalam).",
+"Setiap kesalahan adalah guru terbaikmu – meski kadang gurunya ngeselin banget.",
+"Belajar matematika melatih kesabaran – terutama sabar nunggu jawaban keluar di grup WA.",
+"Kalau orang lain bisa, kamu juga bisa… asal jangan kebanyakan scroll TikTok.",
+
+"Kamu nggak sendirian, banyak yang kesulitan… ujian remedial itu rame kok.",
+"Jangan takut bertanya – asal jangan nanya ‘boleh pulang sekarang nggak Bu?’",
+"Rasa takut hanya ada di pikiranmu – bukan di soal, soalnya nggak punya perasaan.",
+"Setiap soal punya solusi – meski kadang solusinya ‘menyerah dengan ikhlas’.",
+"Kamu nggak perlu sempurna, cukup bisa tidur tenang setelah ujian.",
+"Kesabaranmu hari ini akan berbuah – entah nilai bagus, entah nasi bungkus.",
+
+"Kamu berhak gagal, tapi jangan berhenti – nilai D masih bisa naik jadi C.",
+"Rasa cemas hanyalah awan gelap – yang hilang pas liat temen lebih bingung dari kamu.",
+"Kamu cukup kuat untuk menaklukkan soal – asal jangan ditaklukkan kantuk duluan.",
+"Satu soal sulit nggak menentukan semuanya – kecuali itu soal ujian cuma satu.",
+"Setiap latihan bikin kamu makin jago – kayak otot, lama-lama jadi sixpack matematika.",
+"Jangan biarkan kecemasan menguasaimu – biarkan kopi yang menguasai malammu.",
+"Kamu lebih cerdas dari yang kamu kira – minimal cerdas nyari contekan.",
+"Fokuslah pada proses, hasilnya bisa diatur belakangan.",
+"Soal sulit hanyalah batu loncatan – meski sering bikin mental tersandung.",
+"Matematika melatih ketelitian – terutama ketelitian ngitung sisa uang jajan.",
+
+"Tidak perlu terburu-buru, kecuali kalau jam ujian tinggal 5 menit.",
+"Setiap keberhasilan kecil patut dirayakan – walau cuma berhasil jawab nomor 1.",
+"Matematika nggak pernah mengkhianati orang sabar – yang mengkhianati biasanya sinyal Zoom.",
+"Belajar matematika kayak nge-gym – tapi ototnya otak, bukan bisep.",
+"Rasa takut tanda kamu bertumbuh – kayak rambut, tiba-tiba aja muncul uban.",
+"Kamu lagi nulis kisah sukses – atau minimal kisah perjuangan kocak.",
+"Kamu adalah pejuang pantang menyerah – pejuang lembur dengan kopi sasetan.",
+"Setiap usaha sekecil apapun tetap berharga – kayak nemu recehan di bawah bantal.",
+"Kamu sedang menuju versi terbaik dirimu – versi upgrade, bukan trial 7 hari.",
+
+"Matematika adalah sahabat logika – meski kadang sahabat yang bikin sakit kepala.",
+"Jangan biarkan satu kegagalan menghentikanmu – biarkan itu jadi bahan meme lucu.",
+"Jangan bandingkan dirimu sama orang lain – kecuali kalau kamu mau ikut nyontek.",
+"Soal sulit hanyalah latihan mental – mental badut juga nggak apa-apa.",
+"Rasa cemas hanyalah rintangan kecil – kayak iklan YouTube 5 detik.",
+"Kamu bisa menaklukkan matematika – atau minimal menaklukkan kantuk di kelas.",
+
+						];
+    
+    let popupTimer;
+    let autoCloseTimer;
+    let lastType = ''; // Untuk melacak jenis pesan terakhir
+    
+    // Fungsi untuk menampilkan popup
+    function showPopup() {
+        let randomText;
+        
+        // Bergantian antara motivasi dan plesetan
+        if (lastType !== 'plesetan' && Math.random() > 0.5) {
+            // Tampilkan plesetan
+            const randomIndex = Math.floor(Math.random() * plesetan.length);
+            randomText = plesetan[randomIndex];
+            lastType = 'plesetan';
+            
+            // Ubah gaya untuk plesetan
+            motivationText.style.fontStyle = 'italic';
+            motivationText.style.color = '#E67E22';
+            document.querySelector('.popup-title').innerHTML = '😂 Plesetan Lucu';
+        } else {
+            // Tampilkan motivasi
+            const randomIndex = Math.floor(Math.random() * motivations.length);
+            randomText = motivations[randomIndex];
+            lastType = 'motivation';
+            
+            // Kembalikan gaya untuk motivasi
+            motivationText.style.fontStyle = 'italic';
+            motivationText.style.color = '#34495e';
+            document.querySelector('.popup-title').innerHTML = '💡 Kata Motivasi';
+        }
+        
+        motivationText.textContent = `"${randomText}"`;
+        
+        // Tampilkan popup
+        popup.classList.add('show');
+        
+        // Reset dan mulai timer progress bar
+        timerProgress.style.transition = 'none';
+        timerProgress.style.width = '100%';
+        void timerProgress.offsetWidth; // Trigger reflow
+        timerProgress.style.transition = 'width 10s linear';
+        timerProgress.style.width = '0%';
+        
+        // Set timer untuk menutup otomatis setelah 10 detik
+        clearTimeout(autoCloseTimer);
+        autoCloseTimer = setTimeout(closePopup, 10000);
+    }
+    
+    // Fungsi untuk menutup popup
+    function closePopup() {
+        popup.classList.remove('show');
+        clearTimeout(autoCloseTimer);
+    }
+    
+    // Event listener untuk tombol close
+    closeBtn.addEventListener('click', closePopup);
+    
+    // Tampilkan popup pertama kali setelah 30 detik
+    setTimeout(showPopup, 30000);
+    
+    // Set interval untuk menampilkan popup setiap 2 menit
+    popupTimer = setInterval(showPopup, 120000);
+    
+    // Hentikan interval ketika halaman ditutup/tidak aktif
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            clearInterval(popupTimer);
+            clearTimeout(autoCloseTimer);
+        } else {
+            popupTimer = setInterval(showPopup, 120000);
+        }
+    });
+});
+</script>
 			</body>
 			</html>
 			<!-- dosenuin.github.io/matematika-dasar -->
