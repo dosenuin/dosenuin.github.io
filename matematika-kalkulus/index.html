@@ -1787,7 +1787,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // Set timer untuk menutup otomatis setelah 10 detik
                 clearTimeout(autoCloseTimer);
-                autoCloseTimer = setTimeout(closePopup, 10*1000);
+                autoCloseTimer = setTimeout(closePopup, 1*1000);
             }
             
             // Fungsi untuk menutup popup
@@ -1800,10 +1800,10 @@ document.addEventListener("DOMContentLoaded", function() {
             closeBtn.addEventListener('click', closePopup);
             
             // Tampilkan popup pertama kali setelah 10 detik
-            setTimeout(showPopup, 10*1000);
+            setTimeout(showPopup, 1*1000);
             
             // Set interval untuk menampilkan popup setiap 2*60 detik
-            popupTimer = setInterval(showPopup, 2*60*1000);
+            popupTimer = setInterval(showPopup, 0.5*60*1000);
             
             // Hentikan interval ketika halaman ditutup/tidak aktif
             document.addEventListener('visibilitychange', function() {
@@ -1811,7 +1811,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     clearInterval(popupTimer);
                     clearTimeout(autoCloseTimer);
                 } else {
-                    popupTimer = setInterval(showPopup, 2*60*1000);
+                    popupTimer = setInterval(showPopup, 0.5*60*1000);
                 }
             });
         });
