@@ -292,7 +292,7 @@ strong, b {
 }
 
 /* Label judul untuk setiap kotak konten */
-.definisi::before,.teorema::before,.contoh::before,.aturan::before,.soal::before,.pembahasan::before,.tantangan::before {
+.definisi::before,.teorema::before,.contoh::before,.aturan::before,.soal::before,.tantangan::before {
   position: absolute;
   top: -14px;
   left: 1rem;
@@ -1898,6 +1898,109 @@ document.addEventListener('DOMContentLoaded', function() {
             popupTimer = setInterval(showPopup, 120000);
         }
     });
+});
+</script>
+<!-- Tambahkan kode ini di bagian atas body, setelah container div -->
+<div class="container">
+  <!-- Modal untuk password -->
+  <div id="passwordModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Akses Pembahasan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label">Masukkan Password:</label>
+            <input type="password" class="form-control" id="passwordInput" placeholder="Ketik password di sini">
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="showPassword">
+            <label class="form-check-label" for="showPassword">Tampilkan password</label>
+          </div>
+          <p id="errorMsg" class="text-danger" style="display: none;">Password salah! Coba lagi.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-primary" id="submitPassword">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tombol untuk membuka modal password -->
+  <div class="text-center mb-4">
+    <button id="accessBtn" class="btn btn-primary btn-lg">
+      <i class="bi bi-lock-fill me-2"></i>Akses Pembahasan Eksplorasi SDGs
+    </button>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Password yang benar (ganti dengan password yang Anda inginkan)
+  const correctPassword = "kalkulus123";
+  
+  // Elemen modal
+  const passwordModal = new bootstrap.Modal(document.getElementById('passwordModal'));
+  const passwordInput = document.getElementById('passwordInput');
+  const showPasswordCheckbox = document.getElementById('showPassword');
+  const errorMsg = document.getElementById('errorMsg');
+  const submitBtn = document.getElementById('submitPassword');
+  const accessBtn = document.getElementById('accessBtn');
+  
+  // Toggle show/hide password
+  showPasswordCheckbox.addEventListener('change', function() {
+    passwordInput.type = this.checked ? 'text' : 'password';
+  });
+  
+  // Tombol akses ditekan
+  accessBtn.addEventListener('click', function() {
+    passwordModal.show();
+  });
+  
+  // Submit password
+  submitBtn.addEventListener('click', function() {
+    const inputPassword = passwordInput.value.trim();
+    
+    if (inputPassword === correctPassword) {
+      // Password benar
+      errorMsg.style.display = 'none';
+      passwordModal.hide();
+      
+      // Tampilkan semua class pembahasan
+      document.querySelectorAll('.pembahasan').forEach(el => {
+        el.style.display = 'block';
+      });
+      
+      // Ubah tombol akses
+      accessBtn.innerHTML = '<i class="bi bi-unlock-fill me-2"></i>Pembahasan Terbuka';
+      accessBtn.classList.remove('btn-primary');
+      accessBtn.classList.add('btn-success');
+      accessBtn.disabled = true;
+      
+    } else {
+      // Password salah
+      errorMsg.style.display = 'block';
+      passwordInput.value = '';
+      passwordInput.focus();
+    }
+  });
+  
+  // Reset modal ketika ditutup
+  document.getElementById('passwordModal').addEventListener('hidden.bs.modal', function () {
+    passwordInput.value = '';
+    showPasswordCheckbox.checked = false;
+    passwordInput.type = 'password';
+    errorMsg.style.display = 'none';
+  });
+  
+  // Submit dengan tekan Enter
+  passwordInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      submitBtn.click();
+    }
+  });
 });
 </script>
 			</body>
